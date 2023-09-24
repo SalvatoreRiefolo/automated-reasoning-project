@@ -1,0 +1,13 @@
+{
+    "openFiles": [
+        "pnrr.mzn"
+    ],
+    "openTab": 0,
+    "projectFiles": [
+        "benchmarks/parameters.dzn",
+        "pnrr.mzn"
+    ],
+    "selectedBuiltinConfigId": "org.gecode.gecode",
+    "selectedBuiltinConfigVersion": "6.3.0",
+    "version": 106
+}
