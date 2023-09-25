@@ -4,7 +4,7 @@
 % 100  = 100.000
 % 1000 = 1.000.000
 
-enum RICHIESTE = {strade, fiumi, scuole, energie, parchi};
+enum RICHIESTE = {strade, fiumi, scuole, parchi, energia};
 enum COMUNI = {
   perugia,
   terni,
@@ -27,6 +27,8 @@ enum COMUNI = {
   san_giustino
   };
   
+
+% abitanti per comune in migliaia
 array[COMUNI] of var int: abitanti_per_comune = [161,106,55,38,36,30,27,21,21,19,18,17,16,15,15,14,14,11,11];
 
 array[COMUNI, COMUNI] of var bool: strade_tra_comuni = [|
@@ -79,6 +81,8 @@ constraint
 % al massimo 10.000.000
 var int: somma = sum(i in COMUNI, j in RICHIESTE) (RICHIESTE_PER_COMUNE[i,j]);
 
+var int: non_erogate = 0;
+
 constraint
   somma <= 10000;
 
@@ -86,10 +90,12 @@ constraint
 
 % energia: se una città ha chiesto finanziamenti per tutti gli altri progetti e ha meno di 20.000 abitanti, non viene concesso il finanziamento
 constraint
-    forall(i in COMUNI)
-        exists(r in 1..4 where RICHIESTE_PER_COMUNE[i, r] = 0)
-            -> RICHIESTE_PER_COMUNE[i, 5]= 0
+  forall(i in COMUNI)(
+    forall(r in {strade, fiumi, scuole, parchi})
+      (RICHIESTE_PER_COMUNE[i, r] > 0) /\ abitanti_per_comune[i] < 20 -> RICHIESTE_PER_COMUNE[i, energia] = 0          
+  );
 
+% parchi: 
 
 % GOAL
 % massimizzare spesa: 5.000.000 <= spesa <= 10.000.000
