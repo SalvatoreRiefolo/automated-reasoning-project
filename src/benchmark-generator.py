@@ -84,3 +84,7 @@ batch_richieste_azzerate = [azzera_richieste_casuali(
 pprint(np.matrix(batch_richieste_azzerate[0]))
 
 # TODO: sommare cifre azzerate per mantenere il totale
+
+
+# formato: [| icecream, 1200, 50, 10, 120, 400
+#           | ... |]
