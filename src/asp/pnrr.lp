@@ -87,20 +87,53 @@ connesse(san_giustino,citta_di_castello).
 
 % Vincoli
 
-richiesta(perugia, strade, 1).
-richiesta(corciano, strade, 2).
-richiesta(todi, strade, 6).
-
 % Spesa totale: 5.000.000 < S < 10.000.000
 spesa_totale(T) :- T = #sum{S : richiesta(_, _, S)}.
-:- spesa_totale(T), T > 10, T < 5.
+:- spesa_totale(T), T > 10000000, T < 5000000.
 
 % Almeno una richiesta approvata
 :- citta(C), not {richiesta(C, _, S)} > 0.
 
-% Se due città sono connesse, non possono richiedere entrambe strade
+% Strade: se due città sono connesse, non possono richiedere entrambe strade
 approvata(C1, strade, S1) :- citta(C1), citta(C2), C1 < C2, connesse(C1, C2), 
-    richiesta(C1, strade, S1), S1 > 0,
-    richiesta(C2, strade, S2), S2 > 0.
+    richiesta(C1, strade, S1),
+    richiesta(C2, strade, S2),
+    S1 > 0,
+    S2 > 0,
+    not approvata(C2, strade, S2).
+
+approvata(C1, strade, 0) :- citta(C1), citta(C2), C1 < C2, connesse(C1, C2), 
+    richiesta(C1, strade, S1),
+    richiesta(C2, strade, S2),
+    S1 > 0,
+    S2 > 0,
+    approvata(C2, strade, S2).
+
+% approvata(C, energia, S)
+
+% approvata(C, parchi, S)
+
+% Scuole
+
+somma_richiesta(I, S) :- intervento(I), S = #sum{A : richiesta(_,I,A)}.
+conta_citta(CC) :- CC = #count{C : citta(C)}.
+media(I, M) :- intervento(I), 
+    somma_richiesta(I, S), 
+    conta_citta(CC), 
+    M = S / CC.
+
+ratio(M, C, R) :- citta(C), media(_, M), abitanti(C, A), R = M / A.
+
+approvata(C, scuole, 0) :- 
+    citta(C), richiesta(C, scuole, S), 
+    media(scuole, M),
+    ratio(M, C, R),
+    S * R >  2 * M.
+
+approvata(C, scuole, S) :- 
+    citta(C), richiesta(C, scuole, S), 
+    media(scuole, M),
+    ratio(M, C, R),
+    S * R <=  2 * M.
 
 #show approvata/3.

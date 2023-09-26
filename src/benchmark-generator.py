@@ -3,7 +3,16 @@
 from pprint import pprint
 import numpy as np
 import math
-from pandas import DataFrame
+import argparse
+
+
+tipologie = {
+    0: "strade",
+    1: "fiumi",
+    2: "scuole",
+    3: "parchi",
+    4: "energia"
+}
 
 comuni = [
     "perugia",
@@ -26,7 +35,6 @@ comuni = [
     "amelia",
     "san_giustino"
 ]
-
 
 N_RICHIESTE = 5
 N_COMUNI = len(comuni)
@@ -78,13 +86,54 @@ def azzera_richieste_casuali(richieste):
 # batch_strade_azzerate = [azzera_strade_casuali(
 #     r) for r in genera_richieste(1)]
 
-batch_richieste_azzerate = [azzera_richieste_casuali(
-    r) for r in genera_richieste(1)]
+# batch_richieste_azzerate = [azzera_richieste_casuali(
+#     r) for r in genera_richieste(1)]
 
-pprint(np.matrix(batch_richieste_azzerate[0]))
+# pprint(np.matrix(batch_richieste_azzerate[0]))
 
 # TODO: sommare cifre azzerate per mantenere il totale
 
+def asp_formatter(richieste):
+    # formato: [| icecream, 1200, 50, 10, 120, 400
+    #           | ... |]
+    formattate = []
+    for i, row in enumerate(richieste):
+        regole = [
+            f'richiesta({comuni[i]}, {tipologie[j]}, {r}).' for j, r in enumerate(row)]
+        formattate.append(' '.join(regole) + '\n')
 
-# formato: [| icecream, 1200, 50, 10, 120, 400
-#           | ... |]
+    return formattate
+
+
+def minizinc_formatter(richieste):
+    # formato richiesta(citta, richiesta, costo).
+    formattate = ['strade_tra_comuni = [\n']
+    for i, row in enumerate(richieste):
+        costi = ', '.join([str(r) for r in row])
+        regola = f'\t{comuni[i]}, {costi} |\n'
+        formattate.append(regola)
+
+    formattate.append('|];')
+    return formattate
+
+
+def scrivi_output(nome_file, formatter):
+    with open(nome_file, 'w') as f:
+        richieste = formatter(list(genera_richieste(1))[0])
+        for line in richieste:
+            f.write(line)
+
+
+if __name__ == "__main__":
+    MINIZINC = "mzn"
+    ASP = "lp"
+
+    parser = argparse.ArgumentParser("Generatore benchmark inputs")
+    parser.add_argument('-f', '--format', type=str, choices=[MINIZINC, ASP])
+
+    opts = parser.parse_args()
+
+    if opts.format == MINIZINC:
+        scrivi_output('minizinc/benchmarks/input.dzn', minizinc_formatter)
+    elif opts.format == ASP:
+        scrivi_output('asp/input.lp', asp_formatter)
