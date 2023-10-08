@@ -8,11 +8,11 @@ CONSEGNA:
     I dati di input sono l'elenco città e i progetti richiesti (al massimo uno per tipologia) e i costi richiesti. Si vuole allocare al meglio la quoat di 10 Milioni in modo tale che 
     • Se due comuni sono collegati nel grafo l'intervento sulle strade sarà finanziato al massimo a uno dei due. 
     • Le richieste possono essere approvate come sono o ridotte del 10%, del 20% o del 30%. 
-    • Ad ogni comune sia approvato almeno un progetto. • I 10 Milioni vanno usati il più possibile (magari per ragioni di somme non si arriva esattamente a 10 ma ci dobbiamo andare vicino). 
+    • Ad ogni comune sia approvato almeno un progetto. 
+    • I 10 Milioni vanno usati il più possibile (magari per ragioni di somme non si arriva esattamente a 10 ma ci dobbiamo andare vicino). 
     • Per scuole, energie rinnovabili e parchi giochi, si rigettano progetti troppo esosi. Come calcoliamo se sono esosi? Puoi usare la fantasia. Ad esempio, per le scuole. Consideriamo la media delle cifre richieste per le scuole FRATTO il numero di abitanti per quella città. Se sono oltre il doppio della media vengono cassate. 
     • Puoi aggiungere altri vincoli Hard se ti sembrano ragionevoli.
     • A parità di vincoli hard, minimizza la somma di richieste non erogate (ovvero la cifra dei progetti bocciati e le cifre ridotte del 10, 20, 30%) 
-
 
     Write a Minizinc and an ASP program capable of finding a solution to the
     following  problem.
@@ -87,11 +87,12 @@ req: 100.000   ratio: 100.000/20.000  = 5
 
 Parchi:
 se la spesa supera 2 volte la % di abitanti della citta rispetto alla somma delle richieste per i parchi non viene concesso il finanziamento
+(people/all_people) * sum(requests) > c.parks
 
-(people/ all_people) * sum(requests) > c.parks
+Energie:
+se la somma di tutti i finanziamenti per una città, meno quello per energia, è 4 volte la spesa per l'energia , non viene concesso il finanziamento
 
-energie:
-se una città ha chiesto finanziamenti per tutti gli altri progetti e ha meno di 20.000 abitanti, non viene concesso il finanziamento
+sum(c.requests) - c.parks > 4 * c.parks
 
 -----
 
@@ -101,3 +102,6 @@ Istanze:
 - 5 medie
 - 5 difficili
 - 13 random
+
+minizinc −−solver Chuffed −f −−time−limit 300000 −−output−time pnrr.mzn benchmarks/common.dnz benchmarks/input.dzn
+clingo.exe .\pnrr.lp .\common.lp .\benchmarks\input.lp

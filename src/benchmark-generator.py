@@ -100,7 +100,7 @@ def asp_formatter(richieste):
     for i, row in enumerate(richieste):
         regole = [
             f'richiesta({comuni[i]}, {tipologie[j]}, {r}).' for j, r in enumerate(row)]
-        formattate.append(' '.join(regole) + '\n')
+        formattate.append('\n'.join(regole) + '\n')
 
     return formattate
 
