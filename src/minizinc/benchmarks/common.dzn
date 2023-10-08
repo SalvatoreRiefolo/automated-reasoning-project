@@ -1,4 +1,4 @@
-RICHIESTE = {strade, fiumi, scuole, parchi, energia};
+INTERVENTI = {strade, fiumi, scuole, parchi, energia};
 COMUNI = {
   perugia,
   terni,

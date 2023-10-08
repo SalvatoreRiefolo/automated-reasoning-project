@@ -1,30 +1,24 @@
 include "benchmarks/common.dzn";
 
-% Cifre espresse in migliaia
-% 1    = 1.000
-% 10   = 10.000
-% 100  = 100.000
-% 1000 = 1.000.000
-
-enum RICHIESTE;
+enum INTERVENTI;
 enum COMUNI;
 
 var int: numero_comuni;
 
 array[COMUNI] of var int: abitanti_per_comune;
 array[COMUNI, COMUNI] of var bool: strade_tra_comuni;
-array[COMUNI, RICHIESTE] of var 0..10000000: RICHIESTE;
-array[COMUNI, RICHIESTE] of var 0..10000000: RICHIESTE_APPROVATE;
+array[COMUNI, INTERVENTI] of var 0..10000000: RICHIESTE;
+array[COMUNI, INTERVENTI] of var 0..10000000: RICHIESTE_APPROVATE;
 
 var int: non_erogate = 0;
-var int: somma = sum(i in COMUNI, j in RICHIESTE) (RICHIESTE_APPROVATE[i,j]);
+var int: somma = sum(i in COMUNI, j in INTERVENTI) (RICHIESTE_APPROVATE[i,j]);
 
 % VINCOLI
 
 % ogni città richiede almeno un progetto
 constraint 
   forall(i in COMUNI) (
-    exists(j in RICHIESTE) (
+    exists(j in INTERVENTI) (
       RICHIESTE[i,j] != 0
       )
     );
@@ -32,7 +26,7 @@ constraint
 % ogni città ha almeno un progetto approvato
 constraint 
   forall(i in COMUNI) (
-    exists(j in RICHIESTE) (
+    exists(j in INTERVENTI) (
       RICHIESTE_APPROVATE[i,j] != 0
       )
     );
@@ -52,7 +46,7 @@ constraint
 % ogni richiesta è approvata così com'è o ridotta del 10/20/30% TODO: check
 constraint 
   forall(c in COMUNI) (
-    forall(r in RICHIESTE) (
+    forall(r in INTERVENTI) (
       RICHIESTE_APPROVATE[c, r] = RICHIESTE_APPROVATE[c, r] \/
       RICHIESTE_APPROVATE[c, r] = RICHIESTE_APPROVATE[c, r] * 0.90 \/
       RICHIESTE_APPROVATE[c, r] = RICHIESTE_APPROVATE[c, r] * 0.80 \/
@@ -94,5 +88,3 @@ constraint
 solve maximize somma
 
 % minimizzare numero di richieste non erogate
-
-
