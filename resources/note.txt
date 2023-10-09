@@ -104,4 +104,4 @@ Istanze:
 - 13 random
 
 minizinc −−solver Chuffed −f −−time−limit 300000 −−output−time pnrr.mzn benchmarks/common.dnz benchmarks/input.dzn
-clingo.exe .\pnrr.lp .\common.lp .\benchmarks\input.lp
+clingo pnrr.lp common.lp benchmarks/input.lp

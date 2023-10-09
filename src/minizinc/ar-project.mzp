@@ -4,7 +4,7 @@
     ],
     "openTab": 0,
     "projectFiles": [
-        "benchmarks/common.dzn",
+        "common.dzn",
         "pnrr.mzn"
     ],
     "selectedBuiltinConfigId": "org.gecode.gecode",

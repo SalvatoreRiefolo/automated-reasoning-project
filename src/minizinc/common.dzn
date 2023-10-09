@@ -1,4 +1,5 @@
 INTERVENTI = {strade, fiumi, scuole, parchi, energia};
+
 COMUNI = {
   perugia,
   terni,
@@ -21,10 +22,12 @@ COMUNI = {
   san_giustino
   };
 
-numero_comuni = 19;
-abitanti_per_comune = [161,106,55,38,36,30,27,21,21,19,18,17,16,15,15,14,14,11,11];
+SPESA_MINIMA = 5000000;
+SPESA_MASSIMA = 10000000;
+NUMERO_COMUNI = 19;
+ABITANTI_PER_COMUNE = [161,106,55,38,36,30,27,21,21,19,18,17,16,15,15,14,14,11,11];
 
-strade_tra_comuni = [|
+STRADE_TRA_COMUNI = [|
   false,false,false,false,false,false,false,true,true,false,true,false,true,false,false,false,false,false,false    |
   false,false,false,false,true,false,false,false,false,false,false,true,false,false,false,false,false,false,false  |
   false,false,false,false,false,false,true,false,false,false,false,false,false,false,false,false,false,false,false |

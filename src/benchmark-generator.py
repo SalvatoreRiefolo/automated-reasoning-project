@@ -1,20 +1,13 @@
 # https://stackoverflow.com/questions/18659858/generating-a-list-of-random-numbers-summing-to-1
 
-from pprint import pprint
 import numpy as np
 import math
 import argparse
+from random import sample
 
+request_types = {0: "strade", 1: "fiumi", 2: "scuole", 3: "parchi", 4: "energia"}
 
-tipologie = {
-    0: "strade",
-    1: "fiumi",
-    2: "scuole",
-    3: "parchi",
-    4: "energia"
-}
-
-comuni = [
+cities = [
     "perugia",
     "terni",
     "foligno",
@@ -33,107 +26,113 @@ comuni = [
     "magione",
     "gualdo_tardino",
     "amelia",
-    "san_giustino"
+    "san_giustino",
 ]
 
-N_RICHIESTE = 5
-N_COMUNI = len(comuni)
-N_RICHIESTE_TOTALI = N_COMUNI * N_RICHIESTE
+N_REQUESTS = 5
+N_CITIES = len(cities)
+N_TOTAL_REQUESTS = N_CITIES * N_REQUESTS
 
 
-def genera_richieste(n):
-    for _ in range(n):
-        richieste = np.random.dirichlet(
-            np.ones(N_RICHIESTE_TOTALI), size=1).flatten().tolist()
+def generate_requests(n_cities):
+    requests = (
+        np.random.dirichlet(np.ones(N_REQUESTS * n_cities), size=1).flatten().tolist()
+    )
+    scaled_requests = [math.floor(r * 10_000_000) for r in requests]
 
-        richieste_arr = [math.floor(r * 10_000_000) for r in richieste]
-
-        print(sum(richieste_arr))
-
-        yield [richieste_arr[i:i + N_RICHIESTE]
-               for i in range(0, len(richieste_arr), N_RICHIESTE)]
-
-
-def genera_indici_casuali():
-    n_richieste_da_modificare = math.floor(np.random.rand(1) * N_COMUNI)
-    return np.random.choice(
-        N_COMUNI, n_richieste_da_modificare, replace=False).tolist()
+    return [
+        scaled_requests[i : i + N_REQUESTS]
+        for i in range(0, len(scaled_requests), N_REQUESTS)
+    ]
 
 
-def azzera_strade_casuali(richieste):
-    indici_comuni = genera_indici_casuali()
-    r = list(richieste)
-    for c in indici_comuni:
+def get_random_indices():
+    n_requests_to_change = math.floor(np.random.rand(1) * N_CITIES)
+    return np.random.choice(N_CITIES, n_requests_to_change, replace=False).tolist()
+
+
+def zero_random_roads(requests):
+    city_indices = get_random_indices()
+    r = list(requests)
+    for c in city_indices:
         r[c][0] = 0
 
     return r
 
 
-def azzera_richieste_casuali(richieste):
-    indici_comuni = genera_indici_casuali()
+def zero_random_requests(requests):
+    city_indices = get_random_indices()
 
-    indici_richieste = np.random.choice(
-        N_RICHIESTE, len(indici_comuni)).tolist()
+    request_indices = np.random.choice(N_REQUESTS, len(city_indices)).tolist()
 
-    r = list(richieste)
-    for i, c in enumerate(indici_comuni):
-        r[c][indici_richieste[i]] = 0
+    r = list(requests)
+    for i, c in enumerate(city_indices):
+        r[c][request_indices[i]] = 0
 
     return r
 
 
-# batch_casuale = genera_richieste(10)
-# batch_strade_azzerate = [azzera_strade_casuali(
-#     r) for r in genera_richieste(1)]
+def asp_formatter(requests):
+    """
+    formato: richiesta(citta, intervento, costo).
+    """
+    formatted = []
+    shuffled_cities = sample(cities, len(cities))
 
-# batch_richieste_azzerate = [azzera_richieste_casuali(
-#     r) for r in genera_richieste(1)]
+    for i, row in enumerate(requests):
+        rule = [
+            f"richiesta({shuffled_cities[i]}, {request_types[j]}, {r})."
+            for j, r in enumerate(row)
+        ]
+        formatted.append("\n".join(rule) + "\n\n")
 
-# pprint(np.matrix(batch_richieste_azzerate[0]))
-
-# TODO: sommare cifre azzerate per mantenere il totale
-
-def asp_formatter(richieste):
-    # formato: [| icecream, 1200, 50, 10, 120, 400
-    #           | ... |]
-    formattate = []
-    for i, row in enumerate(richieste):
-        regole = [
-            f'richiesta({comuni[i]}, {tipologie[j]}, {r}).' for j, r in enumerate(row)]
-        formattate.append('\n'.join(regole) + '\n')
-
-    return formattate
+    return formatted
 
 
-def minizinc_formatter(richieste):
-    # formato richiesta(citta, richiesta, costo).
-    formattate = ['strade_tra_comuni = [\n']
-    for i, row in enumerate(richieste):
-        costi = ', '.join([str(r) for r in row])
-        regola = f'\t{comuni[i]}, {costi} |\n'
-        formattate.append(regola)
+def minizinc_formatter(requests):
+    """
+    formato: [| perugia, 1200, 50, 10, 120, 400
+              | ... |]
+    """
+    formatted = ["RICHIESTE = [\n"]
+    shuffled_cities = sample(cities, len(cities))
 
-    formattate.append('|];')
-    return formattate
+    for i, row in enumerate(requests):
+        amounts = ", ".join([str(r) for r in row])
+        rule = f"\t{shuffled_cities[i]}, {amounts} |\n"
+        formatted.append(rule)
+
+    formatted.append("|];")
+    return formatted
 
 
-def scrivi_output(nome_file, formatter):
-    with open(nome_file, 'w') as f:
-        richieste = formatter(list(genera_richieste(1))[0])
-        for line in richieste:
+def write_output(file_name, requests, fmt):
+    with open(file_name, "w") as f:
+        formatted = fmt(requests)
+        for line in formatted:
             f.write(line)
 
 
 if __name__ == "__main__":
+    # TODO: sommare cifre azzerate per mantenere il totale
+
     MINIZINC = "mzn"
     ASP = "lp"
 
     parser = argparse.ArgumentParser("Generatore benchmark inputs")
-    parser.add_argument('-f', '--format', type=str, choices=[MINIZINC, ASP])
+    parser.add_argument("-n", "--name", type=str, default="input")
+    parser.add_argument("-f", "--format", type=str, choices=[MINIZINC, ASP])
+    parser.add_argument("-b", "--batch", type=int, default=1)
+    parser.add_argument(
+        "-c", "--count", type=int, default=N_CITIES, choices=range(1, N_CITIES)
+    )
 
     opts = parser.parse_args()
+    for i in range(opts.batch):
+        fn = f"{opts.name}{i+1}"
+        requests = generate_requests(opts.count)
 
-    if opts.format == MINIZINC:
-        scrivi_output('minizinc/benchmarks/input.dzn', minizinc_formatter)
-    elif opts.format == ASP:
-        scrivi_output('asp/input.lp', asp_formatter)
+        if opts.format == MINIZINC:
+            write_output(f"minizinc/benchmarks/{fn}.dzn", requests, minizinc_formatter)
+        elif opts.format == ASP:
+            write_output(f"asp/benchmarks/{fn}.lp", requests, asp_formatter)

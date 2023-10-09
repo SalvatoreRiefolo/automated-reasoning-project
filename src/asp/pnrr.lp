@@ -38,7 +38,8 @@ approvata(C, parchi, S, M) :-
     numero_citta(N),
     S < 10000000 / N.
 
-% Fiumi: 
+% Fiumi: ogni città non può richiedere più di 2 volte il totale delle richieste dei fiumi, 
+% moltiplicato per la percentuale di abitanti della città rispetto alla regione
 numero_abitanti(N) :- N = #sum{ A : abitanti(_, A) }.
 richiesta_totale_fiumi(TF) :- TF = #sum{ S : richiesta(_, fiumi, S) }.
 

@@ -1,45 +1,58 @@
-include "benchmarks/common.dzn";
+include "common.dzn";
 
 enum INTERVENTI;
 enum COMUNI;
 
-var int: numero_comuni;
+var int: NUMERO_COMUNI;
+var int: SPESA_MINIMA;
+var int: SPESA_MASSIMA;
 
-array[COMUNI] of var int: abitanti_per_comune;
-array[COMUNI, COMUNI] of var bool: strade_tra_comuni;
-array[COMUNI, INTERVENTI] of var 0..10000000: RICHIESTE;
-array[COMUNI, INTERVENTI] of var 0..10000000: RICHIESTE_APPROVATE;
+array[COMUNI] of var int: ABITANTI_PER_COMUNE;
+array[COMUNI, COMUNI] of var bool: STRADE_TRA_COMUNI;
+array[COMUNI, INTERVENTI] of var 0..SPESA_MASSIMA: RICHIESTE;
+array[COMUNI, INTERVENTI] of var 0: RICHIESTE_APPROVATE;
 
 var int: non_erogate = 0;
-var int: somma = sum(i in COMUNI, j in INTERVENTI) (RICHIESTE_APPROVATE[i,j]);
+var int: somma = sum(c in COMUNI, i in INTERVENTI) (RICHIESTE_APPROVATE[c,i]);
+var float: media_richieste = sum(c in COMUNI)(RICHIESTE[c, scuole]) / NUMERO_COMUNI;
+
+var int: abitanti_totali = sum(c in COMUNI)(ABITANTI_PER_COMUNE[c]);
+array[COMUNI] of var float: percentuale_abitanti_per_citta;
 
 % VINCOLI
 
+constraint
+  forall(c in comuni)(
+    percentuale_abitanti_per_citta = ABITANTI_PER_COMUNE[c] / abitanti_totali
+  );
+
 % ogni città richiede almeno un progetto
 constraint 
-  forall(i in COMUNI) (
-    exists(j in INTERVENTI) (
-      RICHIESTE[i,j] != 0
+  forall(c in COMUNI) (
+    exists(i in INTERVENTI) (
+      RICHIESTE[c,i] != 0
       )
     );
 
 % ogni città ha almeno un progetto approvato
 constraint 
-  forall(i in COMUNI) (
-    exists(j in INTERVENTI) (
-      RICHIESTE_APPROVATE[i,j] != 0
+  forall(c in COMUNI) (
+    exists(i in INTERVENTI) (
+      RICHIESTE_APPROVATE[c,i] != 0
       )
     );
 
 % la spesa totale è minore di 10.000.000 e maggiore di 5.000.000
 constraint
-  somma <= 10000000 /\ somma > 5000000;
+  somma <= SPESA_MASSIMA /\ somma > SPESA_MINIMA;
 
 % se le città sono adiacenti ed entrambe richiedono STRADE, una richiesta viene approvata e l'altra rigettata.
 constraint 
   forall(i,j in COMUNI) (
-    if strade_tra_comuni[i,j] 
-    then RICHIESTE_APPROVATE[i, strade] = 0 \/ RICHIESTE_APPROVATE[j, strade] = 0 
+    if STRADE_TRA_COMUNI[i,j] 
+    then 
+      RICHIESTE_APPROVATE[i, strade] = RICHIESTE[i, strade] /\ RICHIESTE_APPROVATE[j, strade] = 0 \/ 
+      RICHIESTE_APPROVATE[j, strade] = RICHIESTE[j, strade] /\ RICHIESTE_APPROVATE[i, strade] = 0
     endif
   );
 
@@ -54,34 +67,40 @@ constraint
     )
   );
 
-% scuole
+% Scuole
 constraint
-  let { 
-    var float: media = sum(i in COMUNI)(RICHIESTE_APPROVATE[i, scuole]) / numero_comuni;
-    } in 
   forall(c in COMUNI)(
-    if RICHIESTE_APPROVATE[c, scuole] * (media / abitanti_per_comune[c]) > (2 * media)
-    then RICHIESTE_APPROVATE[c, scuole] = 0
+    if RICHIESTE[c, scuole] * (media_richieste / ABITANTI_PER_COMUNE[c]) < (2 * media_richieste)
+    then RICHIESTE_APPROVATE[c, scuole] = RICHIESTE[c, scuole]
     endif
   );
 
-% energia:
+% Energia: la richiesta deve essere minore a 4 volte la somma delle altre richieste per la città. 
 constraint
   forall(c in COMUNI)(
-    if sum(r in {strade, fiumi, scuole, parchi}) (RICHIESTE[c, r]) > 4 * RICHIESTE[i, energia]
+    if sum(r in {strade, fiumi, scuole, parchi}) (RICHIESTE[c, r]) < 4 * RICHIESTE[c, energia]
     then RICHIESTE_APPROVATE[c, energia] = RICHIESTE[c, energia]
-    else RICHIESTE_APPROVATE[c, energia] = 0
     endif
   );
 
-% parchi: 
-var int: totale_abitanti = sum(a in abitanti_per_comune) (a)
-var int: spesa_parchi = sum(i in COMUNI)(RICHIESTE[i, parchi]);
-
+% Parchi: ogni città non può richiedere più di 10.000.000/n_comuni euro.
 constraint   
   forall(c in COMUNI)(
-    RICHIESTE_APPROVATE[c, parchi] > spesa_parchi * (abitanti_per_comune[c] / totale_abitanti) -> RICHIESTE_APPROVATE[c, parchi] = 0
+    if RICHIESTE[c, parchi] < SPESA_MASSIMA / NUMERO_COMUNI
+    then RICHIESTE_APPROVATE[c, parchi] = RICHIESTE[c, parchi]
+    endif
   );
+
+% Fiumi: ogni città non può richiedere più di 2 volte il totale delle richieste dei fiumi, 
+% moltiplicato per la percentuale di abitanti della città rispetto alla regione
+var float: somma_richieste_fiumi = sum(c in COMUNI)(RICHIESTE[c, fiumi])
+
+constraint
+  forall(c in COMUNI)(
+    if RICHIESTE[c, fiumi] < 2 * somma_richieste_fiumi * percentuale_abitanti_per_citta[c]
+    then RICHIESTE_APPROVATE[c, fiumi] = RICHIESTE[c, fiumi]
+  );
+
 
 % GOAL
 % massimizzare spesa: 5.000.000 <= spesa <= 10.000.000
