@@ -1,27 +1,5 @@
 INTERVENTI = {strade, fiumi, scuole, parchi, energia};
 
-COMUNI = {
-  perugia,
-  terni,
-  foligno,
-  citta_di_castello,
-  spoleto,
-  gubbio,
-  assisi,
-  corciano,
-  bastia_umbra,
-  orvieto,
-  marsciano,
-  narni,
-  umbertide,
-  todi,
-  castiglione_del_lago,
-  magione,
-  gualdo_tardino,
-  amelia,
-  san_giustino
-  };
-
 SPESA_MINIMA = 5000000;
 SPESA_MASSIMA = 10000000;
 NUMERO_COMUNI = 19;

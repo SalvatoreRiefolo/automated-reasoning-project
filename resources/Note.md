@@ -1,4 +1,4 @@
-CONSEGNA: 
+# CONSEGNA
     PNRR
 
     La comunità europea finanzia i progetti PNRR a cui possono partecipare i comuni con più di 10.000 abitanti. Si consideri una regione (per esempio la Puglia) o un suo sottoinsieme. Basandosi su wikipedia, google maps o simili, si crei un vettore con le città selezionate il numero di abitanti (in migliaia, troncato) e un grafo che dice se c'è un collegamento diretto tra i comuni selezionati (voglio dire, se per andare da A a C si passa per B, o vicinissimi a B, collegheremo A-B e B-C ma non A-C direttamente). Metti questi dati nella relazione. 
@@ -38,21 +38,23 @@ CONSEGNA:
     
     Prepare the programs and the benchmark instances used in a unique zip file.
 
------
+---
 
-Tipi di richiesta
+## Tipi di richiesta
+
 - STRADE
 - FIUMI
 - SCUOLE
 - ENERGIE
 - PARCHI
 
-INPUT
+## Input
+
 - elenco città 
 - progetti con costo richiesti
 - n. abitanti (totale: 945.000)
 
-VINCOLI
+## Vincoli
 - se città sono adiacenti & entrambe richiedono STRADE, approva al massimo ad una delle due
 - ogni comune richiede almeno un progetto e viene approvato almeno un progetto
 - almeno 1 milione erogato per tipologia
@@ -61,13 +63,15 @@ VINCOLI
 - richieste possono essere approvate come sono o ridotte di 10/20/30%
 - si rifiutano richieste troppo costose (definire criteri)
 
-GOAL
+## Obiettivo
 - massimizzare spesa <= 10.000.000
 - minimizzare somma delle richieste non erogate/ridotte
 
-------
+---
 
-Scuole: 
+# Note implementazione
+
+### Scuole: 
 
 mean  = 100.000
 2mean = 200.000
@@ -85,23 +89,23 @@ req: 100.000   ratio: 100.000/20.000  = 5
         if request * ratio > mean2 then reject
 }
 
-Parchi:
+### Parchi:
 se la spesa supera 2 volte la % di abitanti della citta rispetto alla somma delle richieste per i parchi non viene concesso il finanziamento
 (people/all_people) * sum(requests) > c.parks
 
-Energie:
+### Energie:
 se la somma di tutti i finanziamenti per una città, meno quello per energia, è 4 volte la spesa per l'energia , non viene concesso il finanziamento
 
 sum(c.requests) - c.parks > 4 * c.parks
 
------
 
-Istanze: 
+### Istanze: 
 - 2 non risolvibili
 - 5 facili
 - 5 medie
 - 5 difficili
 - 13 random
 
-minizinc −−solver Chuffed −f −−time−limit 300000 −−output−time pnrr.mzn benchmarks/common.dnz benchmarks/input.dzn
-clingo pnrr.lp common.lp benchmarks/input.lp
+## Script
+    > minizinc --solver Chuffed -f --time-limit 300000 --output-time pnrr.mzn common.dzn benchmarks/input.dzn
+    > clingo pnrr.lp common.lp benchmarks/input.lp

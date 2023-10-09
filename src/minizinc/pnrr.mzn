@@ -1,4 +1,4 @@
-include "common.dzn";
+%include "common.dzn";
 
 enum INTERVENTI;
 enum COMUNI;
@@ -22,7 +22,7 @@ array[COMUNI] of var float: percentuale_abitanti_per_citta;
 % VINCOLI
 
 constraint
-  forall(c in comuni)(
+  forall(c in COMUNI)(
     percentuale_abitanti_per_citta = ABITANTI_PER_COMUNE[c] / abitanti_totali
   );
 
@@ -93,12 +93,13 @@ constraint
 
 % Fiumi: ogni città non può richiedere più di 2 volte il totale delle richieste dei fiumi, 
 % moltiplicato per la percentuale di abitanti della città rispetto alla regione
-var float: somma_richieste_fiumi = sum(c in COMUNI)(RICHIESTE[c, fiumi])
+var float: somma_richieste_fiumi = sum(c in COMUNI)(RICHIESTE[c, fiumi]);
 
 constraint
   forall(c in COMUNI)(
     if RICHIESTE[c, fiumi] < 2 * somma_richieste_fiumi * percentuale_abitanti_per_citta[c]
     then RICHIESTE_APPROVATE[c, fiumi] = RICHIESTE[c, fiumi]
+    endif
   );
 
 

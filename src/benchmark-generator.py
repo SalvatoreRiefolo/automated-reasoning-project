@@ -31,8 +31,7 @@ cities = [
 
 N_REQUESTS = 5
 N_CITIES = len(cities)
-N_TOTAL_REQUESTS = N_CITIES * N_REQUESTS
-
+CITIZENS_PER_CITY = [161,106,55,38,36,30,27,21,21,19,18,17,16,15,15,14,14,11,11]
 
 def generate_requests(n_cities):
     requests = (
@@ -46,9 +45,9 @@ def generate_requests(n_cities):
     ]
 
 
-def get_random_indices():
-    n_requests_to_change = math.floor(np.random.rand(1) * N_CITIES)
-    return np.random.choice(N_CITIES, n_requests_to_change, replace=False).tolist()
+def get_random_indices(n_cities):
+    n_requests_to_change = math.ceil(np.random.rand(1) * n_cities)
+    return np.random.choice(n_cities, n_requests_to_change, replace=False).tolist()
 
 
 def zero_random_roads(requests):
@@ -57,24 +56,47 @@ def zero_random_roads(requests):
     for c in city_indices:
         r[c][0] = 0
 
-    return r
+    return spread(r)
 
 
-def zero_random_requests(requests):
-    city_indices = get_random_indices()
+def zero_random_requests(requests, n_cities):
+    city_indices = get_random_indices(n_cities)
 
     request_indices = np.random.choice(N_REQUESTS, len(city_indices)).tolist()
 
+    tot = 0
     r = list(requests)
     for i, c in enumerate(city_indices):
+        tot += r[c][request_indices[i]]
         r[c][request_indices[i]] = 0
+
+    return spread(r, tot)
+
+
+def spread(requests, to_spread):
+    indices = []
+
+    for i, r in enumerate(requests):
+        for j, amount in enumerate(r):
+            if amount != 0:
+                indices.append((i, j))
+
+    to_add = math.floor(to_spread / len(indices))
+
+    r = list(requests)
+    for index in indices:
+        r[index[0]][index[1]] += to_add
 
     return r
 
 
 def asp_formatter(requests):
     """
-    formato: richiesta(citta, intervento, costo).
+    formato: 
+        citta(citta).
+        ...
+        richiesta(citta, intervento, costo).
+        ...
     """
     formatted = []
     shuffled_cities = sample(cities, len(cities))
@@ -91,15 +113,28 @@ def asp_formatter(requests):
 
 def minizinc_formatter(requests):
     """
-    formato: [| perugia, 1200, 50, 10, 120, 400
-              | ... |]
+    formato: 
+        COMUNI: {c1, ...};
+        ABITANTI_PER_COMUNE: [100, ...];
+        RICHIESTE: [| 
+            1200, 50, 10, 120, 400|
+            ... 
+        |];
+        STRADE_TRA_COMUNI : [| 
+            true, false, ...|
+            ... 
+        |];
     """
-    formatted = ["RICHIESTE = [\n"]
+    formatted = ["COMUNI = {\n"]
     shuffled_cities = sample(cities, len(cities))
+    for city in shuffled_cities[:len(requests)]:
+        formatted.append(f"\t{city},\n")
 
-    for i, row in enumerate(requests):
+    formatted.append("};\n")
+    formatted.append("\nRICHIESTE = [|\n")
+    for row in requests:
         amounts = ", ".join([str(r) for r in row])
-        rule = f"\t{shuffled_cities[i]}, {amounts} |\n"
+        rule = f"\t{amounts} |\n"
         formatted.append(rule)
 
     formatted.append("|];")
@@ -114,8 +149,6 @@ def write_output(file_name, requests, fmt):
 
 
 if __name__ == "__main__":
-    # TODO: sommare cifre azzerate per mantenere il totale
-
     MINIZINC = "mzn"
     ASP = "lp"
 
@@ -136,3 +169,6 @@ if __name__ == "__main__":
             write_output(f"minizinc/benchmarks/{fn}.dzn", requests, minizinc_formatter)
         elif opts.format == ASP:
             write_output(f"asp/benchmarks/{fn}.lp", requests, asp_formatter)
+
+# TODO rivedere formatter minizinc
+# TODO aggiungere città a formatter asp
