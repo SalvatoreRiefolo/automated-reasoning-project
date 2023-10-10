@@ -5,44 +5,75 @@ import math
 import argparse
 from random import sample
 
-request_types = {0: "strade", 1: "fiumi", 2: "scuole", 3: "parchi", 4: "energia"}
+REQUEST_TYPES = {0: "strade", 1: "fiumi",
+                 2: "scuole", 3: "parchi", 4: "energia"}
 
-cities = [
-    "perugia",
-    "terni",
-    "foligno",
-    "citta_di_castello",
-    "spoleto",
-    "gubbio",
-    "assisi",
-    "corciano",
-    "bastia_umbra",
-    "orvieto",
-    "marsciano",
-    "narni",
-    "umbertide",
-    "todi",
-    "castiglione_del_lago",
-    "magione",
-    "gualdo_tardino",
-    "amelia",
-    "san_giustino",
+CITIES = [
+    ("perugia", 0),
+    ("terni", 1),
+    ("foligno", 2),
+    ("citta_di_castello", 3),
+    ("spoleto", 4),
+    ("gubbio", 5),
+    ("assisi", 6),
+    ("corciano", 7),
+    ("bastia_umbra", 8),
+    ("orvieto", 9),
+    ("marsciano", 10),
+    ("narni", 11),
+    ("umbertide", 12),
+    ("todi", 13),
+    ("castiglione_del_lago", 14),
+    ("magione", 15),
+    ("gualdo_tardino", 16),
+    ("amelia", 17),
+    ("san_giustino", 18),
+]
+
+ROADS = [
+    [0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1],
+    [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0],
+    [0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+    [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+    [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+    [1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0],
+    [0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 ]
 
 N_REQUESTS = 5
-N_CITIES = len(cities)
-CITIZENS_PER_CITY = [161,106,55,38,36,30,27,21,21,19,18,17,16,15,15,14,14,11,11]
+N_CITIES = len(CITIES)
+CITIZENS_PER_CITY = [161, 106, 55, 38, 36, 30, 27,
+                     21, 21, 19, 18, 17, 16, 15, 15, 14, 14, 11, 11]
 
-def generate_requests(n_cities):
+
+def generate_requests(n_cities, requests_to_zero):
     requests = (
-        np.random.dirichlet(np.ones(N_REQUESTS * n_cities), size=1).flatten().tolist()
+        np.random.dirichlet(np.ones(N_REQUESTS * n_cities),
+                            size=1).flatten().tolist()
     )
     scaled_requests = [math.floor(r * 10_000_000) for r in requests]
 
-    return [
-        scaled_requests[i : i + N_REQUESTS]
+    r = [
+        scaled_requests[i: i + N_REQUESTS]
         for i in range(0, len(scaled_requests), N_REQUESTS)
     ]
+
+    if requests_to_zero != 0:
+        return zero_random_requests(r, requests_to_zero)
+
+    return r
 
 
 def get_random_indices(n_cities):
@@ -74,18 +105,12 @@ def zero_random_requests(requests, n_cities):
 
 
 def spread(requests, to_spread):
-    indices = []
-
-    for i, r in enumerate(requests):
-        for j, amount in enumerate(r):
-            if amount != 0:
-                indices.append((i, j))
-
-    to_add = math.floor(to_spread / len(indices))
+    indices = np.nonzero(requests)
+    to_add = math.floor(to_spread / len(indices[0]))
 
     r = list(requests)
-    for index in indices:
-        r[index[0]][index[1]] += to_add
+    for row, col in zip(indices[0], indices[1]):
+        r[row][col] += to_add
 
     return r
 
@@ -99,11 +124,16 @@ def asp_formatter(requests):
         ...
     """
     formatted = []
-    shuffled_cities = sample(cities, len(cities))
+    shuffled_cities = sample(CITIES, len(requests))
+
+    for c in shuffled_cities:
+        formatted.append(f"citta({c[0]}).\n")
+
+    formatted.append("\n")
 
     for i, row in enumerate(requests):
         rule = [
-            f"richiesta({shuffled_cities[i]}, {request_types[j]}, {r})."
+            f"richiesta({shuffled_cities[i][0]}, {REQUEST_TYPES[j]}, {r})."
             for j, r in enumerate(row)
         ]
         formatted.append("\n".join(rule) + "\n\n")
@@ -125,20 +155,54 @@ def minizinc_formatter(requests):
             ... 
         |];
     """
-    formatted = ["COMUNI = {\n"]
-    shuffled_cities = sample(cities, len(cities))
-    for city in shuffled_cities[:len(requests)]:
-        formatted.append(f"\t{city},\n")
+    shuffled_cities = sample(CITIES, len(requests))
+    city_indices = list(map(lambda c: c[1], shuffled_cities))
 
+    formatted = ["COMUNI = {\n"]
+    for city in shuffled_cities:
+        formatted.append(f"\t{city[0]},\n")
     formatted.append("};\n")
-    formatted.append("\nRICHIESTE = [|\n")
-    for row in requests:
-        amounts = ", ".join([str(r) for r in row])
-        rule = f"\t{amounts} |\n"
+
+    formatted.append(f"\nNUMERO_COMUNI = {len(shuffled_cities)};\n")
+
+    abitanti = "\nABITANTI_PER_COMUNE = ["
+    n_abitanti = [CITIZENS_PER_CITY[i] for i in city_indices]
+    abitanti += ", ".join(list(map(str, n_abitanti)))
+    abitanti += "];\n"
+
+    formatted.append(abitanti)
+
+    restricted_roads = get_roads(city_indices)
+    formatted.append(to_minizinc_matrix(
+        restricted_roads, "STRADE_TRA_COMUNI", lambda x: str(bool(x)).lower()))
+
+    formatted.append(to_minizinc_matrix(
+        requests, "RICHIESTE", lambda x: str(int(x))))
+
+    return formatted
+
+
+def to_minizinc_matrix(matrix, name, converter):
+    formatted = []
+    formatted.append(f"\n{name} = [|\n")
+    for v in matrix:
+        row = ", ".join(map(converter, v))
+        rule = f"\t{row} |\n"
         formatted.append(rule)
 
-    formatted.append("|];")
-    return formatted
+    formatted.append("|];\n")
+    return "".join(formatted)
+
+
+def get_roads(city_indices):
+    reduced_road_map = []
+    for i in city_indices:
+        city_roads = []
+        for j in city_indices:
+            city_roads.append(ROADS[i][j])
+        reduced_road_map.append(city_roads)
+
+    return reduced_road_map
 
 
 def write_output(file_name, requests, fmt):
@@ -156,6 +220,7 @@ if __name__ == "__main__":
     parser.add_argument("-n", "--name", type=str, default="input")
     parser.add_argument("-f", "--format", type=str, choices=[MINIZINC, ASP])
     parser.add_argument("-b", "--batch", type=int, default=1)
+    parser.add_argument("-z", "--zeroes", type=int, default=0)
     parser.add_argument(
         "-c", "--count", type=int, default=N_CITIES, choices=range(1, N_CITIES)
     )
@@ -163,12 +228,10 @@ if __name__ == "__main__":
     opts = parser.parse_args()
     for i in range(opts.batch):
         fn = f"{opts.name}{i+1}"
-        requests = generate_requests(opts.count)
+        requests = generate_requests(opts.count, opts.zeroes)
 
         if opts.format == MINIZINC:
-            write_output(f"minizinc/benchmarks/{fn}.dzn", requests, minizinc_formatter)
+            write_output(
+                f"minizinc/benchmarks/{fn}.dzn", requests, minizinc_formatter)
         elif opts.format == ASP:
             write_output(f"asp/benchmarks/{fn}.lp", requests, asp_formatter)
-
-# TODO rivedere formatter minizinc
-# TODO aggiungere città a formatter asp
