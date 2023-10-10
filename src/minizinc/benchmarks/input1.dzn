@@ -1,0 +1,45 @@
+COMUNI = {
+	perugia,
+	todi,
+	gualdo_tardino,
+	bastia_umbra,
+	corciano,
+	terni,
+	amelia,
+	magione,
+	foligno,
+	narni,
+	citta_di_castello,
+};
+
+NUMERO_COMUNI = 11;
+
+ABITANTI_PER_COMUNE = [161, 15, 14, 21, 21, 106, 11, 14, 55, 17, 38];
+
+STRADE_TRA_COMUNI = [|
+	false, false, false, true, true, false, false, false, false, false, false |
+	false, false, false, false, false, false, true, false, false, false, false |
+	false, false, false, false, false, false, false, false, false, false, false |
+	true, false, false, false, false, false, false, false, false, false, false |
+	true, false, false, false, false, false, false, true, false, false, false |
+	false, false, false, false, false, false, false, false, false, true, false |
+	false, true, false, false, false, false, false, false, false, true, false |
+	false, false, false, false, true, false, false, false, false, false, false |
+	false, false, false, false, false, false, false, false, false, false, false |
+	false, false, false, false, false, true, true, false, false, false, false |
+	false, false, false, false, false, false, false, false, false, false, false |
+|];
+
+RICHIESTE = [|
+	14424, 44941, 460125, 375114, 351296 |
+	298121, 66558, 1074852, 20973, 84184 |
+	43061, 20000, 55323, 433867, 582553 |
+	114946, 89431, 145868, 87603, 88354 |
+	239032, 34515, 140159, 233239, 35252 |
+	604010, 50507, 110977, 15806, 11353 |
+	356131, 344485, 38107, 100157, 144106 |
+	42553, 8366, 189370, 12211, 135148 |
+	375370, 794891, 184633, 39071, 260390 |
+	119561, 105005, 46400, 281705, 233661 |
+	24608, 90507, 20017, 28460, 98616 |
+|];
