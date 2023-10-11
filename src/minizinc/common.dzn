@@ -1,4 +1,0 @@
-INTERVENTI = {strade, fiumi, scuole, parchi, energia};
-
-SPESA_MINIMA = 5000000;
-SPESA_MASSIMA = 10000000;

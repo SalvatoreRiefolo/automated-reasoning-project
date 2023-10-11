@@ -63,7 +63,7 @@ def generate_requests(n_cities, requests_to_zero):
         np.random.dirichlet(np.ones(N_REQUESTS * n_cities),
                             size=1).flatten().tolist()
     )
-    scaled_requests = [math.floor(r * 10_000_000) for r in requests]
+    scaled_requests = [math.floor(r * 1_000) for r in requests]
 
     r = [
         scaled_requests[i: i + N_REQUESTS]

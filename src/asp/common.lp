@@ -5,27 +5,6 @@ intervento(scuole).
 intervento(parchi).
 intervento(energia).
 
-% Città
-citta(perugia).
-citta(terni).
-citta(foligno).
-% citta(citta_di_castello).
-% citta(spoleto).
-% citta(gubbio).
-% citta(assisi).
-% citta(corciano).
-% citta(bastia_umbra).
-% citta(orvieto).
-% citta(marsciano).
-% citta(narni).
-% citta(umbertide).
-% citta(todi).
-% citta(castiglione_del_lago).
-% citta(magione).
-% citta(gualdo_tardino).
-% citta(amelia).
-% citta(san_giustino).
-
 % Abitanti per città
 abitanti(perugia,161).
 abitanti(terni,106).
@@ -88,4 +67,7 @@ connesse(san_giustino,citta_di_castello).
 moltiplicatore(1).
 moltiplicatore(0,9).
 moltiplicatore(0,8).
-moltiplicatore(0,7).
+moltiplicatore(0,7). 
+
+#const richista_minima = 500.
+#const richista_massima = 1000.
