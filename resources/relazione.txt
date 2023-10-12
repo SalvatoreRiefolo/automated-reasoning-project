@@ -1,0 +1,128 @@
+Il problema
+
+Si riporta la consegna del problema.
+
+La comunità europea finanzia i progetti PNRR a cui possono partecipare i comuni con più di 10.000 abitanti. Si consideri una regione (per esempio la Puglia) o un suo sottoinsieme. Si crei un vettore con le città selezionate, il numero di abitanti (in migliaia, troncato) e un grafo che dice se c'è un collegamento diretto tra i comuni selezionati (se per andare da A a C si passa per B, o vicinissimi a B, collegheremo A-B e B-C ma non A-C direttamente).
+    
+Il PNRR consiste in 10 Milioni di Euro complessivo per 5 tipologie di interventi: scuole, strade, energie rinnovabili, parchi giochi, sistemazione di torrenti/fiumi. Non vi è una divisione a monte dei fondi per tipologia ma almeno 1 milione per tipologia va erogato. 
+
+I dati di input sono l'elenco città e i progetti richiesti (al massimo uno per tipologia) e i costi richiesti. Si vuole allocare al meglio la quota di 10 Milioni in modo tale che 
+• Se due comuni sono collegati nel grafo l'intervento sulle strade sarà finanziato al massimo a uno dei due. 
+• Le richieste possono essere approvate come sono o ridotte del 10%, del 20% o del 30%. 
+• Ad ogni comune sia approvato almeno un progetto. 
+• I 10 milioni vanno usati il più possibile. 
+• Per scuole, energie rinnovabili e parchi giochi, si rigettano progetti troppo esosi. Ad esempio, per le scuole: consideriamo la media delle cifre richieste per le scuole FRATTO il numero di abitanti per quella città. Se sono oltre il doppio della media vengono cassate. 
+• Minimizza la somma di richieste non erogate (ovvero la cifra dei progetti bocciati e le cifre ridotte del 10, 20, 30%).
+
+Assunzioni 
+
+La regione presa in considerazione è l'Umbria, con 19 città aventi più di 10.000 abitanti. 
+
+Dopo aver esaminato la consegna, sono state prese le seguenti scelte riguardo ad alcuni punti:
+- Ogni città richiede almeno un intervento.
+- Le richieste vengono approvate o rigettate prima di applicare la riduzione.
+- Le richieste sono effettuate in centinaia di migliaia di euro. Ad esempio, una richiesta di "300" equivale ad una richiesta di 300.000 euro. 
+
+Entrambe le scelte sono state prese per al fine di ridurre il dominio delle richieste e ridurre lo spazio di ricerca. Queste scelte sono state prese dopo aver concluso l'implementazione ed averla testata sui benchmark preparati, avendo notato che le istanze più piccole richiedevano minuti per trovare la prima soluzione.
+
+Per quanto riguarda le riduzioni, queste trovano utilizzo quando la somma delle richieste supera i 10.000.000 e le richieste rifiutate non portano il totale delle richieste approvate sotto questa soglia. Si assume quindi che la somma delle richieste possa superare i 10.000.000.
+
+Obiettivi
+
+I vincoli sui tipi di richieste sono stati così scelti:
+    - Strade: se due città sono connesse da una strada, la richiesta è approvata a solo una delle due città.
+    - Scuole: data una città, se il prodotto tra la richiesta ed il rapporto tra la media delle richieste ed il numero di abitanti della città è per le scuole fratto il numero di abitanti della città è minore di due volte la media delle richieste, allora la richiesta viene approvata.
+    - Parchi: data una città, se la richiesta è inferiore alla percentuale di abitanti della città rispetto al totale moltiplicata per la somma delle richieste per i parchi, allora la richiesta viene approvata
+    - Energie: data una città, se 4 volte la richiesta è inferiore alla somma delle per gli altri interventi per la città, allora la richiesta viene approvata.
+    - Fiumi: data una cittò, se richiede meno di 2 volte il totale delle richieste dei fiumi moltiplicato per la percentuale di abitanti della città rispetto agli abitanti totali, la richiesta viene approvata.
+
+Inoltre ci si vuole assicurare che:
+    - Per ogni città viene approvato almeno un intervento.
+    - La spesa minima per intervento è 1.000.000.
+    - La spesa minima totale è quindi di 5.000.000.
+    - La spesa massima è di 10.000.000.
+
+Come obiettivo, ci si pone di:
+- Massimizzare la spesa, ossia la somma delle richieste approvate.
+- Minimizzare il numero di richieste non approvate o ridotte.
+
+
+
+Implementazione
+
+Minizinc
+
+Per scrivere ed eseguire il modello Minizinc è stata usata la versione XXX del software.
+
+Il programma è diviso in due files: il file pnrr.mzn contiene le costanti e le definizioni dei dati usati nel modello, mentre i file inputN.dzn contengono i valori di input creati dinamicamente.
+
+Le enumerazioni INTERVENTI e COMUNI contengono rispettivamente le tipologie di intervento richiedibili dai comuni ed i nomi di questi. INTERVENTI è statica, in quanto gli interventi richiedibili non variano rispetto agli input, mentre i comuni che richiedono gli interventi non sono sempre gli stessi: la complessità dell'istanza è quindi legata al numero di comuni che effettuano le richieste.
+
+La variabile NUMERO_COMUNI, dinamica anch'essa indica il numero di comuni dell'istanza, mentre le costanti SPESA_MINIMA, SPESA_MASSIMA rappresentano i limiti per la somma delle richieste.
+
+Il vettore ABITANTI_PER_COMUNE rappresenta per ciascun comune il suo numero di abitanti, ed il vettore bidimensionale STRADE_TRA_COMUNI contiene valori booleani che indicano se una strada è presente tra due comuni (true) o no (false). Si noti che, per come vengono generati i dati, la diagonale ha sempre valore false: un comune non ha una strada che lo connette a se stesso.
+
+I vettori bidimensionali RICHIESTE e RICHIESTE_APPROVATE rappresentano rispettivamente gli interventi richiesti da ogni comune e gli interventi che sono stati approvati per ogni comune. Il valore delle richieste varia tra 0 (intervento non richiesto o rigettato) ed il valore massimo per la somma delle richieste.
+
+Seguono una serie di variabili utilizzate dai vari vincoli per definire se una richiesta è accettabile o meno. 
+
+
+Input
+
+I file di input contengono i valori delle variabili definite nel file principale. In particolare:
+
+COMUNI contiene le città che effettuano richieste, sottoinsieme delle città della regione, NUMERO_COMUNI, il numero di queste, e ABITANTI_PER_COMUNE.
+
+STRADE_TRA_COMUNI è una matrice contenente valori booleani che rappresentano se due comuni sono connessi. L'ordine dei comuni è quello specificato dall'enumerazione COMUNI.
+
+Infine RICHIESTE è una matrice contenente interi rappresentanti le richieste per intervento: ogni riga rappresenta i 5 interventi che un comune può richiedere.
+
+
+Output
+
+
+Risultati
+
+
+Answer Set Programming
+
+Per eseguire il modello ASP è stato usato Clingo alla versione XXX.
+
+Il programma è diviso in 3 files: pnrr.lp contiene le definizioni dei vincoli, predicati necessari per valutare i vincoli e obiettivi; common.lp contiene i predicati comuni ad ogni istanza; inputN.lp contiene l'istanza stessa.
+
+Vengono definiti i predicati intervento(I) che identifica i 5 interventi richiedibili, abitanti(Citta, N) che rappresenta il numero di abitanti di una città, connesse(C1, C2) che rappresenta la connessione di due città mediante una strada, e moltiplicatore(M) che rappresenta il fattore per cui una richiesta può essere scalata dopo essere stata approvata.
+
+Vengono inoltre definite le costanti richiesta_minima, richiesta_massima rappresentanti i limiti per la somma delle richieste.
+
+I vincoli assicurano che i predicati rappresentanti le richieste approvate, definiti come approvata(Citta, Intervento, Richiesta, Moltiplicatore), seguano le regole sopra definite. In particolare:
+
+Un vincolo di cardinalità assicura che per ogni richiesta possa essere approvata al più una volta.
+
+Ci si assicura che almeno una richiesta venga effettuata per ogni città ed almeno una richiesta venga approvata per ogni città.
+
+Si definisce l'impossibilità dell'approvazione di due richieste per intervento sulle strade che richiedono strade se le città richiedenti sono connesse.
+
+Similarmente si definisce l'impossibilità dell'approvazione di una richiesta per gli altri interventi attraverso le regole sopra definite.
+
+Si vuole massimizzare la somma delle richieste per gli interventi approvati, scalati per il moltiplicatore associato, e minimizzare il numero di richieste non approvate e scalate: per fare ciò, si calcola il numero di richieste non approvate sottraendo al numero di richieste totali quello delle richieste approvate; viene sommato il numero di richieste ridotte, ottenuto calcolando il numero di richieste approvate con moltiplicatore diverso da 1.
+
+
+Input
+I file di input contengono una lista di predicati citta(C), rappresentanti le città da considerare nell'istanza, ed una lista di predicati richiesta(Citta, Intervento, Richiesta), le richieste per ogni città.
+Diversamente dal modello Minizinc, non è necessario definire dinamicamente le strade tra i comuni ed il numero degli abitanti di questi, in quanto i predicati la cui componente Citta non è specificata nell'input vengono rimossi.
+
+
+Output
+ 
+Vengono dati in output i predicati rappresentanti le richieste approvate, il totale delle richieste effettuate ed il totale delle richieste approvate.
+
+
+Risultati
+
+
+
+Generazione degli input
+
+La generazione degli input avviene tramite script Python: questo contiene la lista completa delle città, delle strade tra di esse e dei loro abitanti. Lo script, in base a dei flag, seleziona un sottoinsieme di comuni e genera casualmente le richieste per essi. È possibile specificare a quanto le richieste si sommano, se includere zeri nelle richieste e quanti comuni selezionare.
+
+L'output della generazione è formattato in .dzn o .lp, in modo da semplificare la creazione degli input attraverso uno script unico.

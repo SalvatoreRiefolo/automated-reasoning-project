@@ -1,24 +1,27 @@
 COMUNI = {
-	amelia,
 	gubbio,
-	spoleto,
-	gualdo_tardino,
+	foligno,
+	citta_di_castello,
+	amelia,
+	magione,
 };
 
-NUMERO_COMUNI = 4;
+NUMERO_COMUNI = 5;
 
-ABITANTI_PER_COMUNE = [11, 30, 36, 14];
+ABITANTI_PER_COMUNE = [30, 55, 38, 11, 14];
 
 STRADE_TRA_COMUNI = [|
-	false, false, false, false |
-	false, false, false, true |
-	false, false, false, false |
-	false, true, false, false |
+	false, false, true, false, false |
+	false, false, false, false, false |
+	true, false, false, false, false |
+	false, false, false, false, false |
+	false, false, false, false, false |
 |];
 
 RICHIESTE = [|
-	274, 63, 23, 18, 20 |
-	38, 108, 41, 49, 32 |
-	4, 7, 38, 34, 24 |
-	114, 3, 53, 39, 7 |
+	5, 42, 140, 118, 7 |
+	96, 10, 14, 29, 25 |
+	8, 8, 16, 50, 23 |
+	5, 41, 62, 17, 36 |
+	45, 27, 18, 101, 45 |
 |];

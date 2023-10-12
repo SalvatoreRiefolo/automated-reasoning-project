@@ -6,7 +6,7 @@
 :- citta(C), {richiesta(C, _, _)} < 1.      % Almeno una richiesta per città
 :- citta(C), {approvata(C, _, _, _)} < 1.   % Almeno una richiesta per città approvata
 
-% Strade: se due città sono connesse, non possono richiedere entrambe strade
+% Strade: se due città sono connesse, non possono richiedere entrambe l'intevento
 :- citta(C1), citta(C2), moltiplicatore(M), connesse(C1, C2), approvata(C1, strade, S1, M), approvata(C2, strade, S2, M).
 
 % Energia: la richiesta deve essere minore a 3 volte la somma delle altre richieste per la città. 
@@ -36,11 +36,11 @@ richiesta_totale_fiumi(TF) :- TF = #sum{ S, fiumi : richiesta(C, fiumi, S) }.
 somma_richiesta(I, S) :- intervento(I), S = #sum{A : richiesta(_,I,A)}.             % Somma delle spese di tutti i comuni per una certa richiesta
 conta_citta(CC) :- CC = #count{C : citta(C)}.                                       % Numero totale delle città
 media(I, M) :- intervento(I), somma_richiesta(I, S), conta_citta(CC), M = S / CC.   % Media spese per una tipologia di intervento tra tutte le città
-ratio(M, C, R) :- citta(C), media(_, M), abitanti(C, A), R = M / A.                 % Spesa media per abitante
+rapporto(M, C, R) :- citta(C), media(_, M), abitanti(C, A), R = M / A.                 % Spesa media per abitante
 
 :-  citta(C), richiesta(C, scuole, S), moltiplicatore(M), approvata(C, scuole, S, M),
     media(scuole, M),
-    ratio(M, C, R),
+    rapporto(M, C, R),
     S * R >  2 * M.
 
 % Il numero di richieste cassate.
@@ -60,11 +60,10 @@ totale_scalato(T) :- T = #sum {V: richiesta_scalata(V)}.
 #show n_richieste/1.
 #show n_approvate/1.
 #show spesa_totale/1.
-#show totale_scalato/1.numero_citta(N) :- N = #count{ C : citta(C)}.
+#show totale_scalato/1.
 #show quantita_ridotte/1.
 #show quantita_non_approvate/1.
 #show approvata/4.
-#show somma_non_energia/2.
 
 #maximize { T : totale_scalato(T) }.
 #minimize { R + NA: quantita_ridotte(R), quantita_non_approvate(NA) }.

@@ -1,3 +1,5 @@
+include "benchmarks/input1.dzn";
+
 enum INTERVENTI = {strade, fiumi, scuole, parchi, energia};
 enum COMUNI;
 
@@ -12,8 +14,8 @@ array[COMUNI, INTERVENTI] of var 0..SPESA_MASSIMA: RICHIESTE_APPROVATE;
 
 var int: non_erogate = 0;
 var int: somma = sum(c in COMUNI, i in INTERVENTI) (RICHIESTE_APPROVATE[c,i]);
-var float: media_richieste = sum(c in COMUNI)(RICHIESTE[c, scuole]) / NUMERO_COMUNI;
-var int: abitanti_totali = sum(c in COMUNI)(ABITANTI_PER_COMUNE[c]);
+var float: media_richieste = sum(c in COMUNI) (RICHIESTE[c, scuole]) / NUMERO_COMUNI;
+var int: abitanti_totali = sum(c in COMUNI) (ABITANTI_PER_COMUNE[c]);
 
 array[COMUNI] of var float: percentuale_abitanti_per_citta =
   [ABITANTI_PER_COMUNE[c] / abitanti_totali | c in COMUNI];
@@ -28,7 +30,7 @@ constraint
       )
     );
 
-% % ogni città ha almeno un progetto approvato
+% ogni città ha almeno un progetto approvato
 constraint 
   forall(c in COMUNI) (
     exists(i in INTERVENTI) (
@@ -41,18 +43,19 @@ constraint
   somma <= SPESA_MASSIMA /\ somma > SPESA_MINIMA;
 
 % se le città sono adiacenti ed entrambe richiedono STRADE, una richiesta viene approvata e l'altra rigettata.
-constraint 
-  forall(i,j in COMUNI where i != j) (
-    if STRADE_TRA_COMUNI[i,j] 
-    then 
-      RICHIESTE_APPROVATE[i, strade] = RICHIESTE[i, strade] /\ RICHIESTE_APPROVATE[j, strade] = 0 \/ 
-      RICHIESTE_APPROVATE[j, strade] = RICHIESTE[j, strade] /\ RICHIESTE_APPROVATE[i, strade] = 0
-    else
-      RICHIESTE_APPROVATE[i, strade] = RICHIESTE[i, strade] /\ RICHIESTE_APPROVATE[j, strade] = RICHIESTE[j, strade]
-    endif
-  );
+constraint
+    forall(c1 in COMUNI, c2 in COMUNI where STRADE_TRA_COMUNI[c1, c2] = true /\ c1 < c2) (
+        (RICHIESTE_APPROVATE[c1, strade] = RICHIESTE[c1, strade] /\ RICHIESTE_APPROVATE[c2, strade] = 0) \/
+        (RICHIESTE_APPROVATE[c1, strade] = 0 /\ RICHIESTE_APPROVATE[c2, strade] = RICHIESTE[c2, strade])
+    );
 
-% ogni richiesta è approvata così com'è o ridotta del 10/20/30% TODO: check
+constraint
+    forall(c1 in COMUNI, c2 in COMUNI where STRADE_TRA_COMUNI[c1, c2] = false /\ c1 < c2) (
+      (not (RICHIESTE_APPROVATE[c1, strade] == 0) -> RICHIESTE_APPROVATE[c1, strade] = RICHIESTE[c1, strade]) /\
+      (not (RICHIESTE_APPROVATE[c2, strade] == 0) -> RICHIESTE_APPROVATE[c2, strade] = RICHIESTE[c2, strade])
+    );
+
+% ogni richiesta è approvata così com'è o ridotta del 10/20/30%
 constraint 
   forall(c in COMUNI) (
     forall(r in INTERVENTI) (
