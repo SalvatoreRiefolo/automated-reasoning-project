@@ -5,6 +5,10 @@ import math
 import argparse
 from random import sample
 
+
+MINIZINC = "mzn"
+ASP = "lp"
+
 REQUEST_TYPES = {0: "strade", 1: "fiumi",
                  2: "scuole", 3: "parchi", 4: "energia"}
 
@@ -63,7 +67,7 @@ def generate_requests(n_cities, requests_to_zero):
         np.random.dirichlet(np.ones(N_REQUESTS * n_cities),
                             size=1).flatten().tolist()
     )
-    scaled_requests = [math.floor(r * 1_000) for r in requests]
+    scaled_requests = [math.floor(r * 10_000) for r in requests]
 
     r = [
         scaled_requests[i: i + N_REQUESTS]
@@ -212,26 +216,39 @@ def write_output(file_name, requests, fmt):
             f.write(line)
 
 
+def run(file_name, batch_size, request_count, zero_requests, format):
+    for i in range(batch_size):
+        fn = f"{file_name}{i+1}"
+        requests = generate_requests(request_count, zero_requests)
+
+        if format == MINIZINC:
+            write_output(
+                f"../minizinc/benchmarks/{fn}.dzn", requests, minizinc_formatter)
+        elif format == ASP:
+            write_output(f"../asp/benchmarks/{fn}.lp", requests, asp_formatter)
+
+    print(
+        f"Written n={batch_size} input files with name '{file_name}(n).{format}'\tRequests per file: {request_count}")
+
+
 if __name__ == "__main__":
-    MINIZINC = "mzn"
-    ASP = "lp"
 
     parser = argparse.ArgumentParser("Generatore benchmark inputs")
+    parser.add_argument("--full", action="store_true")
     parser.add_argument("-n", "--name", type=str, default="input")
     parser.add_argument("-f", "--format", type=str, choices=[MINIZINC, ASP])
-    parser.add_argument("-b", "--batch", type=int, default=1)
+    parser.add_argument("-b", "--batch-size", type=int, default=1)
     parser.add_argument("-z", "--zeroes", type=int, default=0)
     parser.add_argument(
         "-c", "--count", type=int, default=N_CITIES, choices=range(1, N_CITIES)
     )
 
     opts = parser.parse_args()
-    for i in range(opts.batch):
-        fn = f"{opts.name}{i+1}"
-        requests = generate_requests(opts.count, opts.zeroes)
-
-        if opts.format == MINIZINC:
-            write_output(
-                f"minizinc/benchmarks/{fn}.dzn", requests, minizinc_formatter)
-        elif opts.format == ASP:
-            write_output(f"asp/benchmarks/{fn}.lp", requests, asp_formatter)
+    print(opts)
+    if opts.full:
+        for fmt in [MINIZINC, ASP]:
+            run("small", 10, 3, 0, fmt)
+            run("medium", 10, 10, 0, fmt)
+            run("large", 10, N_CITIES, 0, fmt)
+    else:
+        run(opts.name, opts.batch_size, opts.count, opts.zeroes, opts.format)

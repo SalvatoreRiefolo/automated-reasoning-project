@@ -1,0 +1,21 @@
+COMUNI = {
+	perugia,
+	castiglione_del_lago,
+	narni,
+};
+
+NUMERO_COMUNI = 3;
+
+ABITANTI_PER_COMUNE = [161, 15, 17];
+
+STRADE_TRA_COMUNI = [|
+	false, false, false |
+	false, false, false |
+	false, false, false |
+|];
+
+RICHIESTE = [|
+	1207, 253, 145, 1061, 1327 |
+	117, 92, 2115, 679, 1521 |
+	352, 550, 306, 180, 89 |
+|];

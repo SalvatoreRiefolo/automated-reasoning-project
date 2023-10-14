@@ -1,0 +1,42 @@
+COMUNI = {
+	todi,
+	castiglione_del_lago,
+	citta_di_castello,
+	bastia_umbra,
+	spoleto,
+	gubbio,
+	narni,
+	magione,
+	gualdo_tardino,
+	terni,
+};
+
+NUMERO_COMUNI = 10;
+
+ABITANTI_PER_COMUNE = [15, 15, 38, 21, 36, 30, 17, 14, 14, 106];
+
+STRADE_TRA_COMUNI = [|
+	false, false, false, false, false, false, false, false, false, false |
+	false, false, false, false, false, false, false, true, false, false |
+	false, false, false, false, false, false, false, false, false, false |
+	false, false, false, false, false, false, false, false, false, false |
+	false, false, false, false, false, false, false, false, false, true |
+	false, false, false, false, false, false, false, false, true, false |
+	false, false, false, false, false, false, false, false, false, true |
+	false, true, false, false, false, false, false, false, false, false |
+	false, false, false, false, false, true, false, false, false, false |
+	false, false, false, false, true, false, true, false, false, false |
+|];
+
+RICHIESTE = [|
+	298, 12, 32, 64, 501 |
+	274, 470, 232, 200, 298 |
+	93, 170, 34, 64, 118 |
+	51, 117, 34, 472, 38 |
+	289, 56, 45, 204, 51 |
+	150, 84, 387, 146, 8 |
+	26, 667, 91, 65, 635 |
+	105, 116, 517, 276, 199 |
+	100, 109, 92, 8, 290 |
+	32, 168, 8, 1023, 453 |
+|];

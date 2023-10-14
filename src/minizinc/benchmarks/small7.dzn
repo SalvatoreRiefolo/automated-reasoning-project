@@ -1,0 +1,21 @@
+COMUNI = {
+	spoleto,
+	foligno,
+	umbertide,
+};
+
+NUMERO_COMUNI = 3;
+
+ABITANTI_PER_COMUNE = [36, 55, 16];
+
+STRADE_TRA_COMUNI = [|
+	false, false, false |
+	false, false, false |
+	false, false, false |
+|];
+
+RICHIESTE = [|
+	522, 686, 259, 977, 1149 |
+	1276, 261, 458, 148, 648 |
+	173, 127, 1750, 89, 1469 |
+|];

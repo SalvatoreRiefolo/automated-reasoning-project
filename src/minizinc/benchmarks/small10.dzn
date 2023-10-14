@@ -1,0 +1,21 @@
+COMUNI = {
+	marsciano,
+	orvieto,
+	spoleto,
+};
+
+NUMERO_COMUNI = 3;
+
+ABITANTI_PER_COMUNE = [18, 19, 36];
+
+STRADE_TRA_COMUNI = [|
+	false, false, false |
+	false, false, false |
+	false, false, false |
+|];
+
+RICHIESTE = [|
+	2477, 441, 674, 1623, 335 |
+	249, 6, 470, 443, 1222 |
+	89, 645, 123, 152, 1044 |
+|];

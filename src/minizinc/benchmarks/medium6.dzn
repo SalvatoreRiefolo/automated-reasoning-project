@@ -1,0 +1,42 @@
+COMUNI = {
+	todi,
+	castiglione_del_lago,
+	orvieto,
+	citta_di_castello,
+	narni,
+	umbertide,
+	marsciano,
+	perugia,
+	spoleto,
+	gualdo_tardino,
+};
+
+NUMERO_COMUNI = 10;
+
+ABITANTI_PER_COMUNE = [15, 15, 19, 38, 17, 16, 18, 161, 36, 14];
+
+STRADE_TRA_COMUNI = [|
+	false, false, true, false, false, false, true, false, false, false |
+	false, false, false, false, false, false, false, false, false, false |
+	true, false, false, false, false, false, false, false, false, false |
+	false, false, false, false, false, true, false, false, false, false |
+	false, false, false, false, false, false, false, false, false, false |
+	false, false, false, true, false, false, false, true, false, false |
+	true, false, false, false, false, false, false, true, false, false |
+	false, false, false, false, false, true, true, false, false, false |
+	false, false, false, false, false, false, false, false, false, false |
+	false, false, false, false, false, false, false, false, false, false |
+|];
+
+RICHIESTE = [|
+	69, 197, 36, 555, 113 |
+	85, 3, 170, 30, 99 |
+	478, 28, 44, 388, 92 |
+	376, 77, 59, 56, 542 |
+	328, 211, 100, 272, 187 |
+	118, 219, 250, 264, 47 |
+	93, 407, 501, 33, 66 |
+	99, 12, 148, 211, 24 |
+	292, 18, 228, 344, 283 |
+	270, 490, 247, 278, 437 |
+|];

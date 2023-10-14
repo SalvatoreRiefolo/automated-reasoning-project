@@ -1,0 +1,21 @@
+COMUNI = {
+	umbertide,
+	terni,
+	castiglione_del_lago,
+};
+
+NUMERO_COMUNI = 3;
+
+ABITANTI_PER_COMUNE = [16, 106, 15];
+
+STRADE_TRA_COMUNI = [|
+	false, false, false |
+	false, false, false |
+	false, false, false |
+|];
+
+RICHIESTE = [|
+	11, 567, 2223, 554, 447 |
+	305, 2091, 14, 432, 861 |
+	425, 254, 1096, 359, 354 |
+|];

@@ -1,0 +1,21 @@
+COMUNI = {
+	perugia,
+	corciano,
+	citta_di_castello,
+};
+
+NUMERO_COMUNI = 3;
+
+ABITANTI_PER_COMUNE = [161, 21, 38];
+
+STRADE_TRA_COMUNI = [|
+	false, true, false |
+	true, false, false |
+	false, false, false |
+|];
+
+RICHIESTE = [|
+	305, 698, 954, 573, 564 |
+	700, 181, 319, 1843, 435 |
+	1401, 66, 1375, 210, 369 |
+|];

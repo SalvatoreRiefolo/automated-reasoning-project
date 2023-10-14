@@ -1,0 +1,21 @@
+COMUNI = {
+	spoleto,
+	todi,
+	marsciano,
+};
+
+NUMERO_COMUNI = 3;
+
+ABITANTI_PER_COMUNE = [36, 15, 18];
+
+STRADE_TRA_COMUNI = [|
+	false, false, false |
+	false, false, true |
+	false, true, false |
+|];
+
+RICHIESTE = [|
+	299, 799, 640, 272, 443 |
+	525, 198, 903, 321, 1846 |
+	687, 625, 693, 1611, 131 |
+|];

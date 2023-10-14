@@ -1,0 +1,42 @@
+COMUNI = {
+	perugia,
+	gubbio,
+	citta_di_castello,
+	assisi,
+	spoleto,
+	marsciano,
+	orvieto,
+	amelia,
+	gualdo_tardino,
+	foligno,
+};
+
+NUMERO_COMUNI = 10;
+
+ABITANTI_PER_COMUNE = [161, 30, 38, 27, 36, 18, 19, 11, 14, 55];
+
+STRADE_TRA_COMUNI = [|
+	false, false, false, false, false, true, false, false, false, false |
+	false, false, false, false, false, false, false, false, true, false |
+	false, false, false, false, false, false, false, false, false, false |
+	false, false, false, false, false, false, false, false, false, true |
+	false, false, false, false, false, false, false, false, false, false |
+	true, false, false, false, false, false, false, false, false, false |
+	false, false, false, false, false, false, false, false, false, false |
+	false, false, false, false, false, false, false, false, false, false |
+	false, true, false, false, false, false, false, false, false, false |
+	false, false, false, true, false, false, false, false, false, false |
+|];
+
+RICHIESTE = [|
+	88, 133, 153, 418, 51 |
+	354, 79, 18, 51, 123 |
+	230, 52, 178, 71, 255 |
+	128, 389, 364, 532, 169 |
+	0, 457, 480, 115, 72 |
+	272, 388, 395, 137, 96 |
+	66, 937, 172, 443, 96 |
+	25, 210, 4, 71, 219 |
+	7, 154, 144, 0, 59 |
+	291, 341, 34, 266, 190 |
+|];

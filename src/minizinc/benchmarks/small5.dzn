@@ -1,0 +1,21 @@
+COMUNI = {
+	umbertide,
+	orvieto,
+	perugia,
+};
+
+NUMERO_COMUNI = 3;
+
+ABITANTI_PER_COMUNE = [16, 19, 161];
+
+STRADE_TRA_COMUNI = [|
+	false, false, true |
+	false, false, false |
+	true, false, false |
+|];
+
+RICHIESTE = [|
+	1534, 130, 156, 105, 288 |
+	1791, 61, 616, 116, 303 |
+	157, 576, 1185, 2803, 172 |
+|];

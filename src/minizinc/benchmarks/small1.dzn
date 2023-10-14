@@ -1,0 +1,21 @@
+COMUNI = {
+	magione,
+	san_giustino,
+	gualdo_tardino,
+};
+
+NUMERO_COMUNI = 3;
+
+ABITANTI_PER_COMUNE = [14, 11, 14];
+
+STRADE_TRA_COMUNI = [|
+	false, false, false |
+	false, false, false |
+	false, false, false |
+|];
+
+RICHIESTE = [|
+	855, 212, 780, 553, 70 |
+	698, 759, 172, 443, 721 |
+	504, 2259, 306, 39, 1619 |
+|];

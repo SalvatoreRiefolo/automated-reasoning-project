@@ -4,8 +4,9 @@ enum INTERVENTI = {strade, fiumi, scuole, parchi, energia};
 enum COMUNI;
 
 var int: NUMERO_COMUNI;
-int: SPESA_MINIMA = 500;
-int: SPESA_MASSIMA = 1000;
+int: SPESA_MINIMA_INTERVENTO = 1000;
+int: SPESA_MINIMA = 5000;
+int: SPESA_MASSIMA = 10000;
 
 array[COMUNI] of var int: ABITANTI_PER_COMUNE;
 array[COMUNI, COMUNI] of var bool: STRADE_TRA_COMUNI;
@@ -19,6 +20,11 @@ var int: abitanti_totali = sum(c in COMUNI) (ABITANTI_PER_COMUNE[c]);
 
 array[COMUNI] of var float: percentuale_abitanti_per_citta =
   [ABITANTI_PER_COMUNE[c] / abitanti_totali | c in COMUNI];
+
+array[INTERVENTI] of var int: totale_per_intervento = 
+  [sum(c in COMUNI)(RICHIESTE_APPROVATE[c, i]) | i in INTERVENTI];
+
+var int: numero_non_approvate = (NUMERO_COMUNI * 5) - sum(c in COMUNI, i in INTERVENTI) (RICHIESTE_APPROVATE[c,i] == RICHIESTE[c,i]);
 
 % VINCOLI
 
@@ -37,6 +43,12 @@ constraint
       RICHIESTE_APPROVATE[c,i] != 0
       )
     );
+
+% per ogni tipologia di intervento viene speso almeno 1.000.000
+constraint
+  forall(i in INTERVENTI) (
+    totale_per_intervento[i] >= SPESA_MINIMA_INTERVENTO
+  );
 
 % la spesa totale è minore di 10.000.000 e maggiore di 5.000.000
 constraint
@@ -66,19 +78,20 @@ constraint
     )
   );
 
-% Scuole
+%Scuole
 constraint
   forall(c in COMUNI)(
+    RICHIESTE_APPROVATE[c, scuole] = RICHIESTE[c, scuole]
     if RICHIESTE[c, scuole] * (media_richieste / ABITANTI_PER_COMUNE[c]) < (2 * media_richieste)
     then RICHIESTE_APPROVATE[c, scuole] = RICHIESTE[c, scuole]
     else RICHIESTE_APPROVATE[c, scuole] = 0
     endif
   );
 
-% Energia: la richiesta deve essere minore a 4 volte la somma delle altre richieste per la città. 
+% Energia: 2 volte la richiesta deve essere minore alla somma delle altre richieste per la città. 
 constraint
   forall(c in COMUNI)(
-    if sum(r in {strade, fiumi, scuole, parchi}) (RICHIESTE[c, r]) > 4 * RICHIESTE[c, energia]
+    if sum(r in {strade, fiumi, scuole, parchi}) (RICHIESTE[c, r]) > 2 * RICHIESTE[c, energia]
     then RICHIESTE_APPROVATE[c, energia] = RICHIESTE[c, energia]
     else RICHIESTE_APPROVATE[c, energia] = 0
     endif
@@ -93,13 +106,13 @@ constraint
     endif
   );
 
-% Fiumi: ogni città non può richiedere più di 2 volte il totale delle richieste dei fiumi, 
+% Fiumi: ogni città non può richiedere più di 4 volte il totale delle richieste dei fiumi, 
 % moltiplicato per la percentuale di abitanti della città rispetto alla regione
 var float: somma_richieste_fiumi = sum(c in COMUNI)(RICHIESTE[c, fiumi]);
 
 constraint
   forall(c in COMUNI)(
-    if RICHIESTE[c, fiumi] < 2 * somma_richieste_fiumi * percentuale_abitanti_per_citta[c]
+    if RICHIESTE[c, fiumi] < 4 * somma_richieste_fiumi * percentuale_abitanti_per_citta[c]
     then RICHIESTE_APPROVATE[c, fiumi] = RICHIESTE[c, fiumi]
     else RICHIESTE_APPROVATE[c, fiumi] = 0
     endif
@@ -107,8 +120,10 @@ constraint
 
 % OBIETTIVO
 % massimizzare spesa: 5.000.000 <= spesa <= 10.000.000
+% minimizzare richieste non approvate
+% solve :: int_search(numero_non_approvate, input_order, indomain_max, complete) minimize;
 solve maximize somma;
 
-% minimizzare numero di richieste non erogate
-
-% output ["somma:" ++ "\n"] ++ [ show(somma)];
+output ["approvate: "] ++ [show(RICHIESTE_APPROVATE) ++ "\n"];
+output ["somma: "] ++ [ show(somma) ++ "\n"];
+output ["totale_per_intervento:"] ++ [ show(totale_per_intervento) ++ "\n"];

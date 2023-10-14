@@ -1,0 +1,69 @@
+COMUNI = {
+	umbertide,
+	gubbio,
+	assisi,
+	corciano,
+	citta_di_castello,
+	gualdo_tardino,
+	san_giustino,
+	todi,
+	narni,
+	amelia,
+	terni,
+	spoleto,
+	foligno,
+	castiglione_del_lago,
+	orvieto,
+	perugia,
+	marsciano,
+	magione,
+	bastia_umbra,
+};
+
+NUMERO_COMUNI = 19;
+
+ABITANTI_PER_COMUNE = [16, 30, 27, 21, 38, 14, 11, 15, 17, 11, 106, 36, 55, 15, 19, 161, 18, 14, 21];
+
+STRADE_TRA_COMUNI = [|
+	false, true, false, false, true, false, false, false, false, false, false, false, false, false, false, true, false, false, false |
+	true, false, false, false, false, true, false, false, false, false, false, false, false, false, false, false, false, false, false |
+	false, false, false, false, false, false, false, false, false, false, false, false, true, false, false, false, false, false, true |
+	false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true, false, true, false |
+	true, false, false, false, false, false, true, false, false, false, false, false, false, false, false, false, false, false, false |
+	false, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false |
+	false, false, false, false, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false |
+	false, false, false, false, false, false, false, false, false, true, false, false, false, false, true, false, true, false, false |
+	false, false, false, false, false, false, false, false, false, true, true, false, false, false, false, false, false, false, false |
+	false, false, false, false, false, false, false, true, true, false, false, false, false, false, false, false, false, false, false |
+	false, false, false, false, false, false, false, false, true, false, false, true, false, false, false, false, false, false, false |
+	false, false, false, false, false, false, false, false, false, false, true, false, false, false, false, false, false, false, false |
+	false, false, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false |
+	false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true, false |
+	false, false, false, false, false, false, false, true, false, false, false, false, false, false, false, false, false, false, false |
+	true, false, false, true, false, false, false, false, false, false, false, false, false, false, false, false, true, false, true |
+	false, false, false, false, false, false, false, true, false, false, false, false, false, false, false, true, false, false, false |
+	false, false, false, true, false, false, false, false, false, false, false, false, false, true, false, false, false, false, false |
+	false, false, true, false, false, false, false, false, false, false, false, false, false, false, false, true, false, false, false |
+|];
+
+RICHIESTE = [|
+	96, 152, 77, 183, 206 |
+	108, 26, 326, 120, 17 |
+	173, 12, 172, 45, 218 |
+	223, 206, 2, 85, 95 |
+	81, 29, 332, 11, 18 |
+	47, 217, 243, 89, 15 |
+	7, 31, 64, 12, 19 |
+	264, 32, 208, 170, 100 |
+	145, 107, 66, 77, 71 |
+	103, 132, 5, 116, 217 |
+	55, 36, 47, 93, 166 |
+	5, 323, 61, 7, 111 |
+	297, 91, 90, 110, 41 |
+	25, 196, 93, 103, 84 |
+	155, 12, 63, 172, 143 |
+	36, 70, 84, 105, 5 |
+	125, 160, 25, 125, 38 |
+	81, 22, 64, 153, 13 |
+	57, 168, 57, 341, 75 |
+|];

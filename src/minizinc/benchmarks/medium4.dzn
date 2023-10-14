@@ -1,0 +1,42 @@
+COMUNI = {
+	todi,
+	corciano,
+	foligno,
+	marsciano,
+	spoleto,
+	bastia_umbra,
+	gubbio,
+	terni,
+	orvieto,
+	san_giustino,
+};
+
+NUMERO_COMUNI = 10;
+
+ABITANTI_PER_COMUNE = [15, 21, 55, 18, 36, 21, 30, 106, 19, 11];
+
+STRADE_TRA_COMUNI = [|
+	false, false, false, true, false, false, false, false, true, false |
+	false, false, false, false, false, false, false, false, false, false |
+	false, false, false, false, false, false, false, false, false, false |
+	true, false, false, false, false, false, false, false, false, false |
+	false, false, false, false, false, false, false, true, false, false |
+	false, false, false, false, false, false, false, false, false, false |
+	false, false, false, false, false, false, false, false, false, false |
+	false, false, false, false, true, false, false, false, false, false |
+	true, false, false, false, false, false, false, false, false, false |
+	false, false, false, false, false, false, false, false, false, false |
+|];
+
+RICHIESTE = [|
+	108, 213, 99, 801, 7 |
+	118, 51, 224, 320, 38 |
+	26, 254, 160, 137, 65 |
+	111, 229, 619, 112, 241 |
+	314, 355, 197, 53, 386 |
+	34, 148, 133, 532, 42 |
+	305, 314, 83, 45, 137 |
+	107, 483, 73, 112, 204 |
+	423, 40, 436, 107, 289 |
+	220, 88, 148, 152, 79 |
+|];
