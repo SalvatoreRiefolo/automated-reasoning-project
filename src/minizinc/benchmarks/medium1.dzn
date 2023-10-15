@@ -1,42 +1,36 @@
 COMUNI = {
-	terni,
-	orvieto,
-	san_giustino,
 	todi,
-	magione,
 	assisi,
-	corciano,
+	terni,
 	narni,
-	gubbio,
-	marsciano,
+	castiglione_del_lago,
+	umbertide,
+	spoleto,
+	perugia,
 };
 
-NUMERO_COMUNI = 10;
+NUMERO_COMUNI = 8;
 
-ABITANTI_PER_COMUNE = [106, 19, 11, 15, 14, 27, 21, 17, 30, 18];
+ABITANTI_PER_COMUNE = [15, 27, 106, 17, 15, 16, 36, 161];
 
 STRADE_TRA_COMUNI = [|
-	false, false, false, false, false, false, false, true, false, false |
-	false, false, false, true, false, false, false, false, false, false |
-	false, false, false, false, false, false, false, false, false, false |
-	false, true, false, false, false, false, false, false, false, true |
-	false, false, false, false, false, false, true, false, false, false |
-	false, false, false, false, false, false, false, false, false, false |
-	false, false, false, false, true, false, false, false, false, false |
-	true, false, false, false, false, false, false, false, false, false |
-	false, false, false, false, false, false, false, false, false, false |
-	false, false, false, true, false, false, false, false, false, false |
+	false, false, false, false, false, false, false, false |
+	false, false, false, false, false, false, false, false |
+	false, false, false, true, false, false, true, false |
+	false, false, true, false, false, false, false, false |
+	false, false, false, false, false, false, false, false |
+	false, false, false, false, false, false, false, true |
+	false, false, true, false, false, false, false, false |
+	false, false, false, false, false, true, false, false |
 |];
 
 RICHIESTE = [|
-	301, 326, 42, 474, 201 |
-	187, 20, 472, 176, 271 |
-	78, 201, 0, 109, 0 |
-	123, 396, 10, 268, 62 |
-	2, 500, 393, 91, 52 |
-	32, 362, 295, 87, 87 |
-	429, 534, 1039, 261, 160 |
-	70, 36, 206, 226, 255 |
-	40, 64, 251, 92, 227 |
-	17, 11, 130, 190, 122 |
+	0, 28, 6, 30, 29 |
+	41, 21, 6, 41, 11 |
+	60, 22, 23, 30, 5 |
+	48, 50, 3, 5, 37 |
+	2, 81, 19, 9, 22 |
+	22, 5, 0, 28, 2 |
+	56, 52, 18, 16, 24 |
+	1, 71, 22, 24, 8 |
 |];

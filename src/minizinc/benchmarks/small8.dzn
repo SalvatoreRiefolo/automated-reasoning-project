@@ -1,12 +1,12 @@
 COMUNI = {
-	perugia,
-	castiglione_del_lago,
-	narni,
+	todi,
+	gubbio,
+	corciano,
 };
 
 NUMERO_COMUNI = 3;
 
-ABITANTI_PER_COMUNE = [161, 15, 17];
+ABITANTI_PER_COMUNE = [15, 30, 21];
 
 STRADE_TRA_COMUNI = [|
 	false, false, false |
@@ -15,7 +15,7 @@ STRADE_TRA_COMUNI = [|
 |];
 
 RICHIESTE = [|
-	1207, 253, 145, 1061, 1327 |
-	117, 92, 2115, 679, 1521 |
-	352, 550, 306, 180, 89 |
+	40, 33, 104, 6, 51 |
+	5, 61, 148, 143, 0 |
+	45, 125, 4, 65, 162 |
 |];

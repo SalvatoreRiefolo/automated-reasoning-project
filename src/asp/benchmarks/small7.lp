@@ -1,22 +1,22 @@
-citta(citta_di_castello).
-citta(amelia).
-citta(umbertide).
+citta(foligno).
+citta(perugia).
+citta(orvieto).
 
-richiesta(citta_di_castello, strade, 250).
-richiesta(citta_di_castello, fiumi, 455).
-richiesta(citta_di_castello, scuole, 1093).
-richiesta(citta_di_castello, parchi, 23).
-richiesta(citta_di_castello, energia, 600).
+richiesta(foligno, strade, 39).
+richiesta(foligno, fiumi, 35).
+richiesta(foligno, scuole, 9).
+richiesta(foligno, parchi, 48).
+richiesta(foligno, energia, 18).
 
-richiesta(amelia, strade, 710).
-richiesta(amelia, fiumi, 541).
-richiesta(amelia, scuole, 527).
-richiesta(amelia, parchi, 235).
-richiesta(amelia, energia, 782).
+richiesta(perugia, strade, 12).
+richiesta(perugia, fiumi, 67).
+richiesta(perugia, scuole, 163).
+richiesta(perugia, parchi, 104).
+richiesta(perugia, energia, 290).
 
-richiesta(umbertide, strade, 259).
-richiesta(umbertide, fiumi, 988).
-richiesta(umbertide, scuole, 1428).
-richiesta(umbertide, parchi, 714).
-richiesta(umbertide, energia, 1388).
+richiesta(orvieto, strade, 23).
+richiesta(orvieto, fiumi, 38).
+richiesta(orvieto, scuole, 22).
+richiesta(orvieto, parchi, 37).
+richiesta(orvieto, energia, 88).
 

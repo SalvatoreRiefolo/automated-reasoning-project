@@ -1,22 +1,22 @@
-citta(castiglione_del_lago).
+citta(bastia_umbra).
+citta(narni).
 citta(orvieto).
-citta(spoleto).
 
-richiesta(castiglione_del_lago, strade, 114).
-richiesta(castiglione_del_lago, fiumi, 271).
-richiesta(castiglione_del_lago, scuole, 612).
-richiesta(castiglione_del_lago, parchi, 1830).
-richiesta(castiglione_del_lago, energia, 1040).
+richiesta(bastia_umbra, strade, 117).
+richiesta(bastia_umbra, fiumi, 35).
+richiesta(bastia_umbra, scuole, 0).
+richiesta(bastia_umbra, parchi, 66).
+richiesta(bastia_umbra, energia, 108).
 
-richiesta(orvieto, strade, 410).
-richiesta(orvieto, fiumi, 822).
-richiesta(orvieto, scuole, 605).
-richiesta(orvieto, parchi, 1990).
-richiesta(orvieto, energia, 107).
+richiesta(narni, strade, 68).
+richiesta(narni, fiumi, 20).
+richiesta(narni, scuole, 54).
+richiesta(narni, parchi, 11).
+richiesta(narni, energia, 4).
 
-richiesta(spoleto, strade, 20).
-richiesta(spoleto, fiumi, 359).
-richiesta(spoleto, scuole, 557).
-richiesta(spoleto, parchi, 1066).
-richiesta(spoleto, energia, 189).
+richiesta(orvieto, strade, 324).
+richiesta(orvieto, fiumi, 58).
+richiesta(orvieto, scuole, 15).
+richiesta(orvieto, parchi, 56).
+richiesta(orvieto, energia, 55).
 

@@ -1,22 +1,22 @@
-citta(magione).
-citta(san_giustino).
-citta(gualdo_tardino).
+citta(gubbio).
+citta(umbertide).
+citta(orvieto).
 
-richiesta(magione, strade, 24).
-richiesta(magione, fiumi, 193).
-richiesta(magione, scuole, 272).
-richiesta(magione, parchi, 88).
-richiesta(magione, energia, 683).
+richiesta(gubbio, strade, 52).
+richiesta(gubbio, fiumi, 3).
+richiesta(gubbio, scuole, 37).
+richiesta(gubbio, parchi, 35).
+richiesta(gubbio, energia, 84).
 
-richiesta(san_giustino, strade, 1529).
-richiesta(san_giustino, fiumi, 1610).
-richiesta(san_giustino, scuole, 1970).
-richiesta(san_giustino, parchi, 17).
-richiesta(san_giustino, energia, 418).
+richiesta(umbertide, strade, 48).
+richiesta(umbertide, fiumi, 282).
+richiesta(umbertide, scuole, 69).
+richiesta(umbertide, parchi, 35).
+richiesta(umbertide, energia, 172).
 
-richiesta(gualdo_tardino, strade, 1063).
-richiesta(gualdo_tardino, fiumi, 1444).
-richiesta(gualdo_tardino, scuole, 239).
-richiesta(gualdo_tardino, parchi, 38).
-richiesta(gualdo_tardino, energia, 404).
+richiesta(orvieto, strade, 22).
+richiesta(orvieto, fiumi, 108).
+richiesta(orvieto, scuole, 19).
+richiesta(orvieto, parchi, 10).
+richiesta(orvieto, energia, 19).
 

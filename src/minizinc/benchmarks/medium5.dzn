@@ -1,42 +1,36 @@
 COMUNI = {
-	corciano,
-	foligno,
 	spoleto,
-	terni,
-	gubbio,
-	assisi,
+	todi,
+	magione,
+	foligno,
 	castiglione_del_lago,
-	narni,
-	gualdo_tardino,
 	san_giustino,
+	amelia,
+	gubbio,
 };
 
-NUMERO_COMUNI = 10;
+NUMERO_COMUNI = 8;
 
-ABITANTI_PER_COMUNE = [21, 55, 36, 106, 30, 27, 15, 17, 14, 11];
+ABITANTI_PER_COMUNE = [36, 15, 14, 55, 15, 11, 11, 30];
 
 STRADE_TRA_COMUNI = [|
-	false, false, false, false, false, false, false, false, false, false |
-	false, false, false, false, false, true, false, false, false, false |
-	false, false, false, true, false, false, false, false, false, false |
-	false, false, true, false, false, false, false, true, false, false |
-	false, false, false, false, false, false, false, false, true, false |
-	false, true, false, false, false, false, false, false, false, false |
-	false, false, false, false, false, false, false, false, false, false |
-	false, false, false, true, false, false, false, false, false, false |
-	false, false, false, false, true, false, false, false, false, false |
-	false, false, false, false, false, false, false, false, false, false |
+	false, false, false, false, false, false, false, false |
+	false, false, false, false, false, false, true, false |
+	false, false, false, false, true, false, false, false |
+	false, false, false, false, false, false, false, false |
+	false, false, true, false, false, false, false, false |
+	false, false, false, false, false, false, false, false |
+	false, true, false, false, false, false, false, false |
+	false, false, false, false, false, false, false, false |
 |];
 
 RICHIESTE = [|
-	438, 9, 143, 151, 132 |
-	134, 109, 378, 31, 258 |
-	279, 456, 15, 148, 247 |
-	374, 223, 13, 245, 92 |
-	25, 54, 252, 236, 80 |
-	186, 378, 19, 105, 625 |
-	199, 779, 463, 172, 36 |
-	34, 12, 331, 301, 89 |
-	52, 237, 104, 51, 148 |
-	382, 340, 126, 20, 263 |
+	23, 14, 6, 11, 0 |
+	3, 28, 32, 26, 2 |
+	7, 18, 81, 14, 14 |
+	36, 36, 0, 69, 136 |
+	26, 53, 44, 37, 3 |
+	0, 33, 3, 22, 18 |
+	22, 0, 1, 10, 24 |
+	52, 65, 2, 0, 7 |
 |];

@@ -1,22 +1,22 @@
-citta(gualdo_tardino).
-citta(amelia).
-citta(perugia).
+citta(foligno).
+citta(gubbio).
+citta(marsciano).
 
-richiesta(gualdo_tardino, strade, 165).
-richiesta(gualdo_tardino, fiumi, 75).
-richiesta(gualdo_tardino, scuole, 110).
-richiesta(gualdo_tardino, parchi, 112).
-richiesta(gualdo_tardino, energia, 1012).
+richiesta(foligno, strade, 55).
+richiesta(foligno, fiumi, 40).
+richiesta(foligno, scuole, 34).
+richiesta(foligno, parchi, 94).
+richiesta(foligno, energia, 96).
 
-richiesta(amelia, strade, 122).
-richiesta(amelia, fiumi, 1135).
-richiesta(amelia, scuole, 2245).
-richiesta(amelia, parchi, 623).
-richiesta(amelia, energia, 1276).
+richiesta(gubbio, strade, 26).
+richiesta(gubbio, fiumi, 16).
+richiesta(gubbio, scuole, 121).
+richiesta(gubbio, parchi, 134).
+richiesta(gubbio, energia, 98).
 
-richiesta(perugia, strade, 450).
-richiesta(perugia, fiumi, 88).
-richiesta(perugia, scuole, 941).
-richiesta(perugia, parchi, 1161).
-richiesta(perugia, energia, 478).
+richiesta(marsciano, strade, 21).
+richiesta(marsciano, fiumi, 16).
+richiesta(marsciano, scuole, 14).
+richiesta(marsciano, parchi, 156).
+richiesta(marsciano, energia, 69).
 

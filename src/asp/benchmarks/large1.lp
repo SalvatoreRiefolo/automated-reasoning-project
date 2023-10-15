@@ -1,134 +1,134 @@
-citta(terni).
-citta(castiglione_del_lago).
-citta(citta_di_castello).
-citta(spoleto).
 citta(san_giustino).
-citta(magione).
-citta(umbertide).
-citta(perugia).
-citta(marsciano).
-citta(foligno).
 citta(todi).
-citta(corciano).
+citta(foligno).
+citta(spoleto).
+citta(umbertide).
 citta(amelia).
+citta(orvieto).
 citta(narni).
+citta(bastia_umbra).
 citta(assisi).
 citta(gubbio).
+citta(perugia).
+citta(corciano).
+citta(citta_di_castello).
 citta(gualdo_tardino).
-citta(bastia_umbra).
-citta(orvieto).
+citta(magione).
+citta(marsciano).
+citta(terni).
+citta(castiglione_del_lago).
 
-richiesta(terni, strade, 187).
-richiesta(terni, fiumi, 115).
-richiesta(terni, scuole, 20).
-richiesta(terni, parchi, 230).
-richiesta(terni, energia, 7).
+richiesta(san_giustino, strade, 1).
+richiesta(san_giustino, fiumi, 28).
+richiesta(san_giustino, scuole, 8).
+richiesta(san_giustino, parchi, 1).
+richiesta(san_giustino, energia, 2).
 
-richiesta(castiglione_del_lago, strade, 1).
-richiesta(castiglione_del_lago, fiumi, 69).
-richiesta(castiglione_del_lago, scuole, 225).
-richiesta(castiglione_del_lago, parchi, 187).
-richiesta(castiglione_del_lago, energia, 56).
+richiesta(todi, strade, 14).
+richiesta(todi, fiumi, 6).
+richiesta(todi, scuole, 3).
+richiesta(todi, parchi, 25).
+richiesta(todi, energia, 5).
 
-richiesta(citta_di_castello, strade, 65).
-richiesta(citta_di_castello, fiumi, 261).
-richiesta(citta_di_castello, scuole, 177).
-richiesta(citta_di_castello, parchi, 267).
-richiesta(citta_di_castello, energia, 33).
+richiesta(foligno, strade, 15).
+richiesta(foligno, fiumi, 4).
+richiesta(foligno, scuole, 13).
+richiesta(foligno, parchi, 6).
+richiesta(foligno, energia, 17).
 
-richiesta(spoleto, strade, 96).
-richiesta(spoleto, fiumi, 187).
-richiesta(spoleto, scuole, 38).
-richiesta(spoleto, parchi, 36).
-richiesta(spoleto, energia, 75).
+richiesta(spoleto, strade, 0).
+richiesta(spoleto, fiumi, 31).
+richiesta(spoleto, scuole, 15).
+richiesta(spoleto, parchi, 10).
+richiesta(spoleto, energia, 9).
 
-richiesta(san_giustino, strade, 122).
-richiesta(san_giustino, fiumi, 94).
-richiesta(san_giustino, scuole, 5).
-richiesta(san_giustino, parchi, 43).
-richiesta(san_giustino, energia, 74).
+richiesta(umbertide, strade, 4).
+richiesta(umbertide, fiumi, 11).
+richiesta(umbertide, scuole, 31).
+richiesta(umbertide, parchi, 2).
+richiesta(umbertide, energia, 4).
 
-richiesta(magione, strade, 66).
-richiesta(magione, fiumi, 74).
-richiesta(magione, scuole, 71).
-richiesta(magione, parchi, 55).
-richiesta(magione, energia, 81).
+richiesta(amelia, strade, 16).
+richiesta(amelia, fiumi, 7).
+richiesta(amelia, scuole, 1).
+richiesta(amelia, parchi, 0).
+richiesta(amelia, energia, 52).
 
-richiesta(umbertide, strade, 27).
-richiesta(umbertide, fiumi, 142).
-richiesta(umbertide, scuole, 68).
-richiesta(umbertide, parchi, 161).
-richiesta(umbertide, energia, 119).
+richiesta(orvieto, strade, 14).
+richiesta(orvieto, fiumi, 12).
+richiesta(orvieto, scuole, 2).
+richiesta(orvieto, parchi, 11).
+richiesta(orvieto, energia, 13).
 
-richiesta(perugia, strade, 13).
-richiesta(perugia, fiumi, 283).
-richiesta(perugia, scuole, 133).
-richiesta(perugia, parchi, 171).
-richiesta(perugia, energia, 8).
+richiesta(narni, strade, 1).
+richiesta(narni, fiumi, 0).
+richiesta(narni, scuole, 11).
+richiesta(narni, parchi, 6).
+richiesta(narni, energia, 40).
 
-richiesta(marsciano, strade, 68).
-richiesta(marsciano, fiumi, 26).
-richiesta(marsciano, scuole, 40).
-richiesta(marsciano, parchi, 53).
-richiesta(marsciano, energia, 41).
+richiesta(bastia_umbra, strade, 0).
+richiesta(bastia_umbra, fiumi, 1).
+richiesta(bastia_umbra, scuole, 10).
+richiesta(bastia_umbra, parchi, 10).
+richiesta(bastia_umbra, energia, 23).
 
-richiesta(foligno, strade, 291).
-richiesta(foligno, fiumi, 65).
-richiesta(foligno, scuole, 68).
-richiesta(foligno, parchi, 31).
-richiesta(foligno, energia, 79).
+richiesta(assisi, strade, 0).
+richiesta(assisi, fiumi, 5).
+richiesta(assisi, scuole, 48).
+richiesta(assisi, parchi, 10).
+richiesta(assisi, energia, 14).
 
-richiesta(todi, strade, 1).
-richiesta(todi, fiumi, 21).
-richiesta(todi, scuole, 83).
-richiesta(todi, parchi, 38).
-richiesta(todi, energia, 19).
+richiesta(gubbio, strade, 12).
+richiesta(gubbio, fiumi, 18).
+richiesta(gubbio, scuole, 7).
+richiesta(gubbio, parchi, 0).
+richiesta(gubbio, energia, 2).
 
-richiesta(corciano, strade, 8).
-richiesta(corciano, fiumi, 127).
-richiesta(corciano, scuole, 210).
-richiesta(corciano, parchi, 64).
-richiesta(corciano, energia, 22).
+richiesta(perugia, strade, 8).
+richiesta(perugia, fiumi, 0).
+richiesta(perugia, scuole, 12).
+richiesta(perugia, parchi, 3).
+richiesta(perugia, energia, 3).
 
-richiesta(amelia, strade, 89).
-richiesta(amelia, fiumi, 45).
-richiesta(amelia, scuole, 99).
-richiesta(amelia, parchi, 303).
-richiesta(amelia, energia, 109).
+richiesta(corciano, strade, 4).
+richiesta(corciano, fiumi, 10).
+richiesta(corciano, scuole, 0).
+richiesta(corciano, parchi, 10).
+richiesta(corciano, energia, 4).
 
-richiesta(narni, strade, 54).
-richiesta(narni, fiumi, 23).
-richiesta(narni, scuole, 178).
-richiesta(narni, parchi, 84).
-richiesta(narni, energia, 105).
+richiesta(citta_di_castello, strade, 36).
+richiesta(citta_di_castello, fiumi, 10).
+richiesta(citta_di_castello, scuole, 4).
+richiesta(citta_di_castello, parchi, 11).
+richiesta(citta_di_castello, energia, 15).
 
-richiesta(assisi, strade, 152).
-richiesta(assisi, fiumi, 258).
-richiesta(assisi, scuole, 319).
-richiesta(assisi, parchi, 292).
-richiesta(assisi, energia, 152).
+richiesta(gualdo_tardino, strade, 24).
+richiesta(gualdo_tardino, fiumi, 16).
+richiesta(gualdo_tardino, scuole, 10).
+richiesta(gualdo_tardino, parchi, 8).
+richiesta(gualdo_tardino, energia, 2).
 
-richiesta(gubbio, strade, 16).
-richiesta(gubbio, fiumi, 82).
-richiesta(gubbio, scuole, 240).
-richiesta(gubbio, parchi, 167).
-richiesta(gubbio, energia, 27).
+richiesta(magione, strade, 8).
+richiesta(magione, fiumi, 15).
+richiesta(magione, scuole, 2).
+richiesta(magione, parchi, 28).
+richiesta(magione, energia, 3).
 
-richiesta(gualdo_tardino, strade, 18).
-richiesta(gualdo_tardino, fiumi, 343).
-richiesta(gualdo_tardino, scuole, 220).
-richiesta(gualdo_tardino, parchi, 15).
-richiesta(gualdo_tardino, energia, 90).
+richiesta(marsciano, strade, 7).
+richiesta(marsciano, fiumi, 11).
+richiesta(marsciano, scuole, 2).
+richiesta(marsciano, parchi, 0).
+richiesta(marsciano, energia, 19).
 
-richiesta(bastia_umbra, strade, 149).
-richiesta(bastia_umbra, fiumi, 33).
-richiesta(bastia_umbra, scuole, 220).
-richiesta(bastia_umbra, parchi, 72).
-richiesta(bastia_umbra, energia, 24).
+richiesta(terni, strade, 6).
+richiesta(terni, fiumi, 4).
+richiesta(terni, scuole, 6).
+richiesta(terni, parchi, 3).
+richiesta(terni, energia, 0).
 
-richiesta(orvieto, strade, 1).
-richiesta(orvieto, fiumi, 32).
-richiesta(orvieto, scuole, 243).
-richiesta(orvieto, parchi, 87).
-richiesta(orvieto, energia, 116).
+richiesta(castiglione_del_lago, strade, 3).
+richiesta(castiglione_del_lago, fiumi, 2).
+richiesta(castiglione_del_lago, scuole, 30).
+richiesta(castiglione_del_lago, parchi, 4).
+richiesta(castiglione_del_lago, energia, 4).
 

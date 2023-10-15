@@ -4,7 +4,7 @@
 0 {approvata(C, I, R, M): richiesta(C, I, R)} 1 :- citta(C), intervento(I), moltiplicatore(M).
 
 
-1 {richiesta_scalata(C, I, S): richiesta(C, I, R)} 1 :- citta(C), intervento(I), moltiplicatore(M), S = R * M.
+%1 {richiesta_scalata(C, I, S): richiesta(C, I, R)} 1 :- citta(C), intervento(I), moltiplicatore(M), S = R * M.
 
 :- citta(C), {richiesta(C, _, _)} < 1.      % Almeno una richiesta per città
 :- citta(C), {approvata(C, _, _, _)} < 1.   % Almeno una richiesta per città approvata
@@ -22,18 +22,7 @@ somma_non_energia(C, S) :- citta(C), S = #sum{A, I : richiesta(C, I, A), I != en
 numero_citta(N) :- N = #count{ C : citta(C)}.
 
 :- citta(C), richiesta(C, parchi, A), moltiplicatore(M), approvata(C, parchi, A, M),
-   numero_citta(N), A > (richiesta_massima / N).
-
-% Fiumi: ogni città non può richiedere più di 4 volte il totale delle richieste dei fiumi, 
-% moltiplicato per la percentuale di abitanti della città rispetto alla regione
-numero_abitanti(N) :- citta(C), N = #sum{ A, C : abitanti(C, A) }.
-richiesta_totale_fiumi(TF) :- TF = #sum{ S, fiumi : richiesta(C, fiumi, S) }.
-
-:-  citta(C), richiesta(C, fiumi, S), moltiplicatore(M), approvata(C, fiumi, S, M),
-    abitanti(C, N),
-    numero_abitanti(NA),
-    richiesta_totale_fiumi(TF),
-    S > (N / NA) * 4 * TF.
+   numero_citta(N), A > richiesta_massima / N.
 
 % Scuole
 somma_richiesta(I, S) :- intervento(I), S = #sum{A : richiesta(_,I,A)}.             % Somma delle spese di tutti i comuni per una certa richiesta
@@ -53,15 +42,15 @@ n_richieste(N) :- N = #count {A, I: richiesta(_, I, A)}.
 n_approvate(N) :- N = #count {A, I: approvata(_, I, A, _)}.
 quantita_non_approvate(NA) :- n_richieste(N), n_approvate(M), NA = N-M.
 
-richiesta_scalata(V) :- approvata(_,_, R, M), V = R * M.
-spesa_totale(T) :- T = #sum{S : richiesta(_, _, S)}.
-totale_scalato(T) :- T = #sum {V: richiesta_scalata(V)}.
+richiesta_scalata(I, V) :- intervento(I), approvata(_,I, R, M), V = R * M.
+spesa_totale(T) :- T = #sum{S, C, I : richiesta(C, I, S)}.
+totale_scalato(T) :- T = #sum {V: richiesta_scalata(_, V)}.
 
 % Spesa totale: 5.000.000 < S < 10.000.000
-:- totale_scalato(T), T > richiesta_massima, T < richiesta_minima.
+:- totale_scalato(T), T > richiesta_massima.
 
 % Spesa minima intervento: 1.000.000
-totale_intervento(I, T) :- intervento(I), T = #sum{A, C : approvata(_, I, A)}.
+totale_intervento(I, T) :- intervento(I), T = #sum{V: richiesta_scalata(I, V)}.
 :- intervento(I), totale_intervento(I, T), T < richiesta_minima_intervento.
 
 #show n_richieste/1.

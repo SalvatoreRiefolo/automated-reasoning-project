@@ -1,42 +1,36 @@
 COMUNI = {
-	castiglione_del_lago,
-	todi,
+	terni,
+	gubbio,
 	assisi,
-	corciano,
-	magione,
-	spoleto,
-	narni,
-	citta_di_castello,
-	amelia,
+	marsciano,
+	todi,
 	umbertide,
+	narni,
+	amelia,
 };
 
-NUMERO_COMUNI = 10;
+NUMERO_COMUNI = 8;
 
-ABITANTI_PER_COMUNE = [15, 15, 27, 21, 14, 36, 17, 38, 11, 16];
+ABITANTI_PER_COMUNE = [106, 30, 27, 18, 15, 16, 17, 11];
 
 STRADE_TRA_COMUNI = [|
-	false, false, false, false, true, false, false, false, false, false |
-	false, false, false, false, false, false, false, false, true, false |
-	false, false, false, false, false, false, false, false, false, false |
-	false, false, false, false, true, false, false, false, false, false |
-	true, false, false, true, false, false, false, false, false, false |
-	false, false, false, false, false, false, false, false, false, false |
-	false, false, false, false, false, false, false, false, true, false |
-	false, false, false, false, false, false, false, false, false, true |
-	false, true, false, false, false, false, true, false, false, false |
-	false, false, false, false, false, false, false, true, false, false |
+	false, false, false, false, false, false, true, false |
+	false, false, false, false, false, true, false, false |
+	false, false, false, false, false, false, false, false |
+	false, false, false, false, true, false, false, false |
+	false, false, false, true, false, false, false, true |
+	false, true, false, false, false, false, false, false |
+	true, false, false, false, false, false, false, true |
+	false, false, false, false, true, false, true, false |
 |];
 
 RICHIESTE = [|
-	20, 478, 449, 58, 205 |
-	197, 624, 801, 110, 154 |
-	189, 73, 109, 164, 48 |
-	171, 21, 37, 103, 23 |
-	402, 221, 81, 114, 28 |
-	111, 601, 60, 154, 196 |
-	880, 382, 3, 78, 5 |
-	66, 274, 91, 161, 383 |
-	462, 87, 319, 27, 145 |
-	85, 9, 155, 159, 202 |
+	9, 37, 27, 0, 9 |
+	7, 21, 49, 15, 18 |
+	5, 11, 0, 3, 17 |
+	30, 12, 59, 34, 15 |
+	14, 17, 67, 36, 2 |
+	4, 11, 59, 24, 31 |
+	25, 31, 5, 43, 78 |
+	61, 14, 12, 46, 22 |
 |];

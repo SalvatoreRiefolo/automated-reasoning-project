@@ -1,42 +1,36 @@
 COMUNI = {
-	gualdo_tardino,
-	gubbio,
-	castiglione_del_lago,
-	spoleto,
-	narni,
-	terni,
-	umbertide,
-	foligno,
-	orvieto,
 	todi,
+	narni,
+	castiglione_del_lago,
+	terni,
+	corciano,
+	gubbio,
+	umbertide,
+	assisi,
 };
 
-NUMERO_COMUNI = 10;
+NUMERO_COMUNI = 8;
 
-ABITANTI_PER_COMUNE = [14, 30, 15, 36, 17, 106, 16, 55, 19, 15];
+ABITANTI_PER_COMUNE = [15, 17, 15, 106, 21, 30, 16, 27];
 
 STRADE_TRA_COMUNI = [|
-	false, true, false, false, false, false, false, false, false, false |
-	true, false, false, false, false, false, true, false, false, false |
-	false, false, false, false, false, false, false, false, false, false |
-	false, false, false, false, false, true, false, false, false, false |
-	false, false, false, false, false, true, false, false, false, false |
-	false, false, false, true, true, false, false, false, false, false |
-	false, true, false, false, false, false, false, false, false, false |
-	false, false, false, false, false, false, false, false, false, false |
-	false, false, false, false, false, false, false, false, false, true |
-	false, false, false, false, false, false, false, false, true, false |
+	false, false, false, false, false, false, false, false |
+	false, false, false, true, false, false, false, false |
+	false, false, false, false, false, false, false, false |
+	false, true, false, false, false, false, false, false |
+	false, false, false, false, false, false, false, false |
+	false, false, false, false, false, false, true, false |
+	false, false, false, false, false, true, false, false |
+	false, false, false, false, false, false, false, false |
 |];
 
 RICHIESTE = [|
-	174, 58, 294, 223, 269 |
-	50, 71, 290, 310, 324 |
-	132, 24, 70, 334, 13 |
-	146, 24, 5, 124, 279 |
-	205, 323, 181, 109, 213 |
-	231, 550, 142, 127, 71 |
-	220, 365, 150, 125, 1 |
-	194, 394, 168, 91, 120 |
-	96, 99, 256, 253, 153 |
-	348, 131, 114, 652, 681 |
+	5, 36, 11, 6, 3 |
+	27, 0, 73, 23, 0 |
+	67, 79, 15, 4, 1 |
+	14, 11, 12, 7, 16 |
+	6, 8, 6, 18, 50 |
+	28, 11, 74, 1, 15 |
+	5, 6, 27, 16, 84 |
+	106, 17, 6, 70, 17 |
 |];

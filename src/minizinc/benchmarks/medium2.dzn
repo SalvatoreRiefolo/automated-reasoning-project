@@ -1,42 +1,36 @@
 COMUNI = {
-	todi,
-	perugia,
-	castiglione_del_lago,
-	san_giustino,
-	narni,
-	orvieto,
-	gubbio,
+	magione,
 	spoleto,
-	gualdo_tardino,
 	foligno,
+	castiglione_del_lago,
+	corciano,
+	bastia_umbra,
+	citta_di_castello,
+	orvieto,
 };
 
-NUMERO_COMUNI = 10;
+NUMERO_COMUNI = 8;
 
-ABITANTI_PER_COMUNE = [15, 161, 15, 11, 17, 19, 30, 36, 14, 55];
+ABITANTI_PER_COMUNE = [14, 36, 55, 15, 21, 21, 38, 19];
 
 STRADE_TRA_COMUNI = [|
-	false, false, false, false, false, true, false, false, false, false |
-	false, false, false, false, false, false, false, false, false, false |
-	false, false, false, false, false, false, false, false, false, false |
-	false, false, false, false, false, false, false, false, false, false |
-	false, false, false, false, false, false, false, false, false, false |
-	true, false, false, false, false, false, false, false, false, false |
-	false, false, false, false, false, false, false, false, true, false |
-	false, false, false, false, false, false, false, false, false, false |
-	false, false, false, false, false, false, true, false, false, false |
-	false, false, false, false, false, false, false, false, false, false |
+	false, false, false, true, true, false, false, false |
+	false, false, false, false, false, false, false, false |
+	false, false, false, false, false, false, false, false |
+	true, false, false, false, false, false, false, false |
+	true, false, false, false, false, false, false, false |
+	false, false, false, false, false, false, false, false |
+	false, false, false, false, false, false, false, false |
+	false, false, false, false, false, false, false, false |
 |];
 
 RICHIESTE = [|
-	78, 213, 216, 253, 310 |
-	415, 53, 296, 207, 1041 |
-	212, 123, 771, 74, 88 |
-	71, 464, 95, 456, 5 |
-	70, 254, 289, 451, 33 |
-	33, 19, 25, 214, 387 |
-	14, 146, 9, 35, 201 |
-	937, 268, 20, 128, 45 |
-	187, 116, 250, 139, 25 |
-	10, 31, 45, 27, 126 |
+	44, 0, 10, 8, 0 |
+	56, 16, 10, 17, 9 |
+	25, 87, 8, 8, 123 |
+	27, 51, 44, 16, 7 |
+	7, 22, 2, 13, 4 |
+	26, 29, 14, 11, 0 |
+	1, 40, 13, 52, 36 |
+	5, 58, 46, 28, 7 |
 |];

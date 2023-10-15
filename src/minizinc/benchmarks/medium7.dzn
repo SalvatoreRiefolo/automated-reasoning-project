@@ -1,42 +1,36 @@
 COMUNI = {
-	spoleto,
+	perugia,
+	assisi,
+	marsciano,
 	magione,
-	castiglione_del_lago,
-	narni,
-	bastia_umbra,
-	amelia,
-	gualdo_tardino,
+	spoleto,
 	san_giustino,
-	orvieto,
-	terni,
+	amelia,
+	foligno,
 };
 
-NUMERO_COMUNI = 10;
+NUMERO_COMUNI = 8;
 
-ABITANTI_PER_COMUNE = [36, 14, 15, 17, 21, 11, 14, 11, 19, 106];
+ABITANTI_PER_COMUNE = [161, 27, 18, 14, 36, 11, 11, 55];
 
 STRADE_TRA_COMUNI = [|
-	false, false, false, false, false, false, false, false, false, true |
-	false, false, true, false, false, false, false, false, false, false |
-	false, true, false, false, false, false, false, false, false, false |
-	false, false, false, false, false, true, false, false, false, true |
-	false, false, false, false, false, false, false, false, false, false |
-	false, false, false, true, false, false, false, false, false, false |
-	false, false, false, false, false, false, false, false, false, false |
-	false, false, false, false, false, false, false, false, false, false |
-	false, false, false, false, false, false, false, false, false, false |
-	true, false, false, true, false, false, false, false, false, false |
+	false, false, true, false, false, false, false, false |
+	false, false, false, false, false, false, false, true |
+	true, false, false, false, false, false, false, false |
+	false, false, false, false, false, false, false, false |
+	false, false, false, false, false, false, false, false |
+	false, false, false, false, false, false, false, false |
+	false, false, false, false, false, false, false, false |
+	false, true, false, false, false, false, false, false |
 |];
 
 RICHIESTE = [|
-	392, 50, 226, 8, 196 |
-	116, 102, 144, 76, 257 |
-	105, 85, 159, 93, 79 |
-	63, 216, 1, 59, 28 |
-	341, 1481, 213, 153, 878 |
-	156, 25, 3, 209, 796 |
-	333, 251, 87, 72, 236 |
-	355, 568, 17, 208, 18 |
-	296, 146, 178, 22, 41 |
-	61, 306, 53, 0, 19 |
+	27, 6, 7, 46, 24 |
+	4, 96, 85, 10, 32 |
+	6, 55, 48, 29, 20 |
+	6, 7, 10, 25, 24 |
+	9, 5, 23, 39, 7 |
+	28, 42, 50, 6, 13 |
+	1, 14, 48, 0, 50 |
+	11, 58, 1, 1, 7 |
 |];

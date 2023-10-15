@@ -1,12 +1,12 @@
 COMUNI = {
-	corciano,
-	amelia,
+	citta_di_castello,
+	assisi,
 	spoleto,
 };
 
 NUMERO_COMUNI = 3;
 
-ABITANTI_PER_COMUNE = [21, 11, 36];
+ABITANTI_PER_COMUNE = [38, 27, 36];
 
 STRADE_TRA_COMUNI = [|
 	false, false, false |
@@ -15,7 +15,7 @@ STRADE_TRA_COMUNI = [|
 |];
 
 RICHIESTE = [|
-	574, 1017, 680, 653, 86 |
-	56, 313, 130, 691, 3862 |
-	18, 245, 1252, 76, 340 |
+	11, 154, 113, 18, 0 |
+	25, 96, 64, 35, 90 |
+	89, 47, 98, 4, 148 |
 |];

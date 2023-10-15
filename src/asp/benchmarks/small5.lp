@@ -1,22 +1,22 @@
-citta(foligno).
+citta(spoleto).
 citta(citta_di_castello).
-citta(magione).
+citta(san_giustino).
 
-richiesta(foligno, strade, 1251).
-richiesta(foligno, fiumi, 733).
-richiesta(foligno, scuole, 282).
-richiesta(foligno, parchi, 250).
-richiesta(foligno, energia, 3514).
+richiesta(spoleto, strade, 14).
+richiesta(spoleto, fiumi, 118).
+richiesta(spoleto, scuole, 38).
+richiesta(spoleto, parchi, 159).
+richiesta(spoleto, energia, 24).
 
-richiesta(citta_di_castello, strade, 225).
-richiesta(citta_di_castello, fiumi, 542).
-richiesta(citta_di_castello, scuole, 1566).
-richiesta(citta_di_castello, parchi, 50).
-richiesta(citta_di_castello, energia, 418).
+richiesta(citta_di_castello, strade, 89).
+richiesta(citta_di_castello, fiumi, 117).
+richiesta(citta_di_castello, scuole, 39).
+richiesta(citta_di_castello, parchi, 30).
+richiesta(citta_di_castello, energia, 125).
 
-richiesta(magione, strade, 386).
-richiesta(magione, fiumi, 126).
-richiesta(magione, scuole, 633).
-richiesta(magione, parchi, 1).
-richiesta(magione, energia, 13).
+richiesta(san_giustino, strade, 52).
+richiesta(san_giustino, fiumi, 92).
+richiesta(san_giustino, scuole, 43).
+richiesta(san_giustino, parchi, 7).
+richiesta(san_giustino, energia, 46).
 

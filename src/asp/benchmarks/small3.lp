@@ -1,22 +1,22 @@
-citta(gubbio).
-citta(magione).
-citta(todi).
+citta(bastia_umbra).
+citta(gualdo_tardino).
+citta(corciano).
 
-richiesta(gubbio, strade, 439).
-richiesta(gubbio, fiumi, 496).
-richiesta(gubbio, scuole, 31).
-richiesta(gubbio, parchi, 64).
-richiesta(gubbio, energia, 2700).
+richiesta(bastia_umbra, strade, 4).
+richiesta(bastia_umbra, fiumi, 157).
+richiesta(bastia_umbra, scuole, 177).
+richiesta(bastia_umbra, parchi, 9).
+richiesta(bastia_umbra, energia, 102).
 
-richiesta(magione, strade, 229).
-richiesta(magione, fiumi, 45).
-richiesta(magione, scuole, 614).
-richiesta(magione, parchi, 314).
-richiesta(magione, energia, 430).
+richiesta(gualdo_tardino, strade, 2).
+richiesta(gualdo_tardino, fiumi, 7).
+richiesta(gualdo_tardino, scuole, 109).
+richiesta(gualdo_tardino, parchi, 22).
+richiesta(gualdo_tardino, energia, 14).
 
-richiesta(todi, strade, 182).
-richiesta(todi, fiumi, 1462).
-richiesta(todi, scuole, 885).
-richiesta(todi, parchi, 398).
-richiesta(todi, energia, 1703).
+richiesta(corciano, strade, 137).
+richiesta(corciano, fiumi, 26).
+richiesta(corciano, scuole, 19).
+richiesta(corciano, parchi, 107).
+richiesta(corciano, energia, 101).
 

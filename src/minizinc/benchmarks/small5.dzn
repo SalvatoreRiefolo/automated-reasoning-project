@@ -1,21 +1,21 @@
 COMUNI = {
+	gubbio,
 	umbertide,
-	orvieto,
-	perugia,
+	magione,
 };
 
 NUMERO_COMUNI = 3;
 
-ABITANTI_PER_COMUNE = [16, 19, 161];
+ABITANTI_PER_COMUNE = [30, 16, 14];
 
 STRADE_TRA_COMUNI = [|
-	false, false, true |
-	false, false, false |
+	false, true, false |
 	true, false, false |
+	false, false, false |
 |];
 
 RICHIESTE = [|
-	1534, 130, 156, 105, 288 |
-	1791, 61, 616, 116, 303 |
-	157, 576, 1185, 2803, 172 |
+	63, 5, 10, 225, 11 |
+	62, 61, 58, 27, 75 |
+	113, 30, 150, 41, 62 |
 |];

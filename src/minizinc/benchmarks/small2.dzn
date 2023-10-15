@@ -1,12 +1,12 @@
 COMUNI = {
+	bastia_umbra,
 	spoleto,
-	todi,
-	marsciano,
+	terni,
 };
 
 NUMERO_COMUNI = 3;
 
-ABITANTI_PER_COMUNE = [36, 15, 18];
+ABITANTI_PER_COMUNE = [21, 36, 106];
 
 STRADE_TRA_COMUNI = [|
 	false, false, false |
@@ -15,7 +15,7 @@ STRADE_TRA_COMUNI = [|
 |];
 
 RICHIESTE = [|
-	299, 799, 640, 272, 443 |
-	525, 198, 903, 321, 1846 |
-	687, 625, 693, 1611, 131 |
+	13, 24, 121, 6, 140 |
+	86, 37, 116, 51, 46 |
+	64, 34, 89, 93, 72 |
 |];

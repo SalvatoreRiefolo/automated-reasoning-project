@@ -69,6 +69,5 @@ moltiplicatore(0,9).
 moltiplicatore(0,8).
 moltiplicatore(0,7). 
 
-#const richista_minima_intervento = 100.
-#const richista_minima = 500.
-#const richista_massima = 1000.
+#const richiesta_minima_intervento = 100.
+#const richiesta_massima = 1000.

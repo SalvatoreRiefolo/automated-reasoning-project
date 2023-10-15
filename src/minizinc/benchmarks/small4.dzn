@@ -1,21 +1,21 @@
 COMUNI = {
-	narni,
-	assisi,
+	san_giustino,
+	citta_di_castello,
 	magione,
 };
 
 NUMERO_COMUNI = 3;
 
-ABITANTI_PER_COMUNE = [17, 27, 14];
+ABITANTI_PER_COMUNE = [11, 38, 14];
 
 STRADE_TRA_COMUNI = [|
-	false, false, false |
-	false, false, false |
+	false, true, false |
+	true, false, false |
 	false, false, false |
 |];
 
 RICHIESTE = [|
-	522, 398, 518, 454, 160 |
-	355, 205, 296, 183, 671 |
-	731, 1235, 1993, 1932, 340 |
+	50, 164, 68, 7, 50 |
+	47, 93, 17, 108, 7 |
+	124, 74, 148, 30, 8 |
 |];

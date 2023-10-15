@@ -1,12 +1,12 @@
 COMUNI = {
+	san_giustino,
+	perugia,
 	spoleto,
-	foligno,
-	umbertide,
 };
 
 NUMERO_COMUNI = 3;
 
-ABITANTI_PER_COMUNE = [36, 55, 16];
+ABITANTI_PER_COMUNE = [11, 161, 36];
 
 STRADE_TRA_COMUNI = [|
 	false, false, false |
@@ -15,7 +15,7 @@ STRADE_TRA_COMUNI = [|
 |];
 
 RICHIESTE = [|
-	522, 686, 259, 977, 1149 |
-	1276, 261, 458, 148, 648 |
-	173, 127, 1750, 89, 1469 |
+	11, 38, 103, 10, 243 |
+	7, 3, 199, 56, 142 |
+	87, 18, 11, 12, 53 |
 |];

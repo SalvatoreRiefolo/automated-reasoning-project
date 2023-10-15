@@ -85,7 +85,7 @@ req: 100.000 ratio: 100.000/20.000 = 5
 
 {
 mean = sum(requests)
-mean2 = 2\*mean
+mean2 = 2*mean
 
     forall cities:
         ratio = mean / city.people

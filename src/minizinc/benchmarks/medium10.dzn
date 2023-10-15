@@ -1,42 +1,36 @@
 COMUNI = {
-	perugia,
-	gubbio,
-	citta_di_castello,
-	assisi,
-	spoleto,
+	corciano,
 	marsciano,
-	orvieto,
+	bastia_umbra,
+	spoleto,
+	narni,
+	umbertide,
+	castiglione_del_lago,
 	amelia,
-	gualdo_tardino,
-	foligno,
 };
 
-NUMERO_COMUNI = 10;
+NUMERO_COMUNI = 8;
 
-ABITANTI_PER_COMUNE = [161, 30, 38, 27, 36, 18, 19, 11, 14, 55];
+ABITANTI_PER_COMUNE = [21, 18, 21, 36, 17, 16, 15, 11];
 
 STRADE_TRA_COMUNI = [|
-	false, false, false, false, false, true, false, false, false, false |
-	false, false, false, false, false, false, false, false, true, false |
-	false, false, false, false, false, false, false, false, false, false |
-	false, false, false, false, false, false, false, false, false, true |
-	false, false, false, false, false, false, false, false, false, false |
-	true, false, false, false, false, false, false, false, false, false |
-	false, false, false, false, false, false, false, false, false, false |
-	false, false, false, false, false, false, false, false, false, false |
-	false, true, false, false, false, false, false, false, false, false |
-	false, false, false, true, false, false, false, false, false, false |
+	false, false, false, false, false, false, false, false |
+	false, false, false, false, false, false, false, false |
+	false, false, false, false, false, false, false, false |
+	false, false, false, false, false, false, false, false |
+	false, false, false, false, false, false, false, true |
+	false, false, false, false, false, false, false, false |
+	false, false, false, false, false, false, false, false |
+	false, false, false, false, true, false, false, false |
 |];
 
 RICHIESTE = [|
-	88, 133, 153, 418, 51 |
-	354, 79, 18, 51, 123 |
-	230, 52, 178, 71, 255 |
-	128, 389, 364, 532, 169 |
-	0, 457, 480, 115, 72 |
-	272, 388, 395, 137, 96 |
-	66, 937, 172, 443, 96 |
-	25, 210, 4, 71, 219 |
-	7, 154, 144, 0, 59 |
-	291, 341, 34, 266, 190 |
+	21, 24, 30, 98, 72 |
+	88, 1, 4, 45, 20 |
+	10, 12, 29, 5, 1 |
+	67, 40, 0, 26, 31 |
+	30, 13, 28, 10, 31 |
+	12, 13, 39, 22, 3 |
+	12, 29, 6, 5, 4 |
+	28, 3, 42, 5, 19 |
 |];

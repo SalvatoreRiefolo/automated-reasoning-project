@@ -1,71 +1,43 @@
-citta(orvieto).
-citta(spoleto).
-citta(todi).
-citta(perugia).
-citta(san_giustino).
 citta(amelia).
-citta(gualdo_tardino).
-citta(magione).
-citta(umbertide).
-citta(narni).
+citta(todi).
+citta(gubbio).
+citta(bastia_umbra).
+citta(castiglione_del_lago).
+citta(orvieto).
 
-richiesta(orvieto, strade, 79).
-richiesta(orvieto, fiumi, 114).
-richiesta(orvieto, scuole, 276).
-richiesta(orvieto, parchi, 134).
-richiesta(orvieto, energia, 10).
+richiesta(amelia, strade, 71).
+richiesta(amelia, fiumi, 11).
+richiesta(amelia, scuole, 13).
+richiesta(amelia, parchi, 35).
+richiesta(amelia, energia, 7).
 
-richiesta(spoleto, strade, 104).
-richiesta(spoleto, fiumi, 351).
-richiesta(spoleto, scuole, 383).
-richiesta(spoleto, parchi, 784).
-richiesta(spoleto, energia, 641).
+richiesta(todi, strade, 31).
+richiesta(todi, fiumi, 5).
+richiesta(todi, scuole, 29).
+richiesta(todi, parchi, 23).
+richiesta(todi, energia, 1).
 
-richiesta(todi, strade, 85).
-richiesta(todi, fiumi, 112).
-richiesta(todi, scuole, 242).
-richiesta(todi, parchi, 276).
-richiesta(todi, energia, 41).
+richiesta(gubbio, strade, 28).
+richiesta(gubbio, fiumi, 69).
+richiesta(gubbio, scuole, 38).
+richiesta(gubbio, parchi, 67).
+richiesta(gubbio, energia, 15).
 
-richiesta(perugia, strade, 54).
-richiesta(perugia, fiumi, 371).
-richiesta(perugia, scuole, 153).
-richiesta(perugia, parchi, 177).
-richiesta(perugia, energia, 457).
+richiesta(bastia_umbra, strade, 3).
+richiesta(bastia_umbra, fiumi, 25).
+richiesta(bastia_umbra, scuole, 88).
+richiesta(bastia_umbra, parchi, 12).
+richiesta(bastia_umbra, energia, 11).
 
-richiesta(san_giustino, strade, 13).
-richiesta(san_giustino, fiumi, 484).
-richiesta(san_giustino, scuole, 17).
-richiesta(san_giustino, parchi, 17).
-richiesta(san_giustino, energia, 165).
+richiesta(castiglione_del_lago, strade, 88).
+richiesta(castiglione_del_lago, fiumi, 22).
+richiesta(castiglione_del_lago, scuole, 6).
+richiesta(castiglione_del_lago, parchi, 70).
+richiesta(castiglione_del_lago, energia, 24).
 
-richiesta(amelia, strade, 119).
-richiesta(amelia, fiumi, 401).
-richiesta(amelia, scuole, 117).
-richiesta(amelia, parchi, 114).
-richiesta(amelia, energia, 101).
-
-richiesta(gualdo_tardino, strade, 126).
-richiesta(gualdo_tardino, fiumi, 66).
-richiesta(gualdo_tardino, scuole, 102).
-richiesta(gualdo_tardino, parchi, 313).
-richiesta(gualdo_tardino, energia, 610).
-
-richiesta(magione, strade, 13).
-richiesta(magione, fiumi, 43).
-richiesta(magione, scuole, 42).
-richiesta(magione, parchi, 429).
-richiesta(magione, energia, 238).
-
-richiesta(umbertide, strade, 62).
-richiesta(umbertide, fiumi, 4).
-richiesta(umbertide, scuole, 498).
-richiesta(umbertide, parchi, 166).
-richiesta(umbertide, energia, 198).
-
-richiesta(narni, strade, 95).
-richiesta(narni, fiumi, 13).
-richiesta(narni, scuole, 23).
-richiesta(narni, parchi, 417).
-richiesta(narni, energia, 127).
+richiesta(orvieto, strade, 61).
+richiesta(orvieto, fiumi, 6).
+richiesta(orvieto, scuole, 15).
+richiesta(orvieto, parchi, 107).
+richiesta(orvieto, energia, 3).
 

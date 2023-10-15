@@ -1,22 +1,22 @@
+citta(gualdo_tardino).
 citta(foligno).
-citta(umbertide).
-citta(spoleto).
+citta(perugia).
 
-richiesta(foligno, strade, 222).
-richiesta(foligno, fiumi, 1256).
-richiesta(foligno, scuole, 38).
-richiesta(foligno, parchi, 848).
-richiesta(foligno, energia, 944).
+richiesta(gualdo_tardino, strade, 25).
+richiesta(gualdo_tardino, fiumi, 16).
+richiesta(gualdo_tardino, scuole, 54).
+richiesta(gualdo_tardino, parchi, 41).
+richiesta(gualdo_tardino, energia, 177).
 
-richiesta(umbertide, strade, 22).
-richiesta(umbertide, fiumi, 375).
-richiesta(umbertide, scuole, 86).
-richiesta(umbertide, parchi, 962).
-richiesta(umbertide, energia, 511).
+richiesta(foligno, strade, 51).
+richiesta(foligno, fiumi, 111).
+richiesta(foligno, scuole, 29).
+richiesta(foligno, parchi, 18).
+richiesta(foligno, energia, 15).
 
-richiesta(spoleto, strade, 952).
-richiesta(spoleto, fiumi, 3170).
-richiesta(spoleto, scuole, 80).
-richiesta(spoleto, parchi, 54).
-richiesta(spoleto, energia, 471).
+richiesta(perugia, strade, 18).
+richiesta(perugia, fiumi, 59).
+richiesta(perugia, scuole, 156).
+richiesta(perugia, parchi, 108).
+richiesta(perugia, energia, 114).
 

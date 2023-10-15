@@ -1,12 +1,12 @@
 COMUNI = {
-	marsciano,
-	orvieto,
-	spoleto,
+	citta_di_castello,
+	todi,
+	corciano,
 };
 
 NUMERO_COMUNI = 3;
 
-ABITANTI_PER_COMUNE = [18, 19, 36];
+ABITANTI_PER_COMUNE = [38, 15, 21];
 
 STRADE_TRA_COMUNI = [|
 	false, false, false |
@@ -15,7 +15,7 @@ STRADE_TRA_COMUNI = [|
 |];
 
 RICHIESTE = [|
-	2477, 441, 674, 1623, 335 |
-	249, 6, 470, 443, 1222 |
-	89, 645, 123, 152, 1044 |
+	25, 160, 73, 137, 185 |
+	4, 8, 39, 112, 56 |
+	34, 38, 1, 32, 89 |
 |];

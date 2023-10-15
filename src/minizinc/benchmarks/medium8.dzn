@@ -1,42 +1,36 @@
 COMUNI = {
-	todi,
-	castiglione_del_lago,
 	citta_di_castello,
 	bastia_umbra,
-	spoleto,
+	perugia,
 	gubbio,
-	narni,
-	magione,
-	gualdo_tardino,
-	terni,
+	amelia,
+	todi,
+	assisi,
+	orvieto,
 };
 
-NUMERO_COMUNI = 10;
+NUMERO_COMUNI = 8;
 
-ABITANTI_PER_COMUNE = [15, 15, 38, 21, 36, 30, 17, 14, 14, 106];
+ABITANTI_PER_COMUNE = [38, 21, 161, 30, 11, 15, 27, 19];
 
 STRADE_TRA_COMUNI = [|
-	false, false, false, false, false, false, false, false, false, false |
-	false, false, false, false, false, false, false, true, false, false |
-	false, false, false, false, false, false, false, false, false, false |
-	false, false, false, false, false, false, false, false, false, false |
-	false, false, false, false, false, false, false, false, false, true |
-	false, false, false, false, false, false, false, false, true, false |
-	false, false, false, false, false, false, false, false, false, true |
-	false, true, false, false, false, false, false, false, false, false |
-	false, false, false, false, false, true, false, false, false, false |
-	false, false, false, false, true, false, true, false, false, false |
+	false, false, false, false, false, false, false, false |
+	false, false, true, false, false, false, true, false |
+	false, true, false, false, false, false, false, false |
+	false, false, false, false, false, false, false, false |
+	false, false, false, false, false, true, false, false |
+	false, false, false, false, true, false, false, true |
+	false, true, false, false, false, false, false, false |
+	false, false, false, false, false, true, false, false |
 |];
 
 RICHIESTE = [|
-	298, 12, 32, 64, 501 |
-	274, 470, 232, 200, 298 |
-	93, 170, 34, 64, 118 |
-	51, 117, 34, 472, 38 |
-	289, 56, 45, 204, 51 |
-	150, 84, 387, 146, 8 |
-	26, 667, 91, 65, 635 |
-	105, 116, 517, 276, 199 |
-	100, 109, 92, 8, 290 |
-	32, 168, 8, 1023, 453 |
+	1, 13, 53, 0, 3 |
+	22, 17, 29, 21, 7 |
+	2, 83, 77, 2, 39 |
+	54, 28, 37, 70, 29 |
+	2, 9, 58, 20, 27 |
+	20, 12, 18, 21, 11 |
+	38, 58, 0, 34, 0 |
+	11, 15, 24, 14, 2 |
 |];

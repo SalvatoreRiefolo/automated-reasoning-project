@@ -1,12 +1,12 @@
 COMUNI = {
-	umbertide,
-	terni,
-	castiglione_del_lago,
+	bastia_umbra,
+	corciano,
+	orvieto,
 };
 
 NUMERO_COMUNI = 3;
 
-ABITANTI_PER_COMUNE = [16, 106, 15];
+ABITANTI_PER_COMUNE = [21, 21, 19];
 
 STRADE_TRA_COMUNI = [|
 	false, false, false |
@@ -15,7 +15,7 @@ STRADE_TRA_COMUNI = [|
 |];
 
 RICHIESTE = [|
-	11, 567, 2223, 554, 447 |
-	305, 2091, 14, 432, 861 |
-	425, 254, 1096, 359, 354 |
+	147, 45, 34, 0, 44 |
+	1, 88, 36, 115, 35 |
+	12, 92, 101, 82, 160 |
 |];

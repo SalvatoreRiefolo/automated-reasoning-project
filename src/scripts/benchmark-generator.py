@@ -67,7 +67,7 @@ def generate_requests(n_cities, requests_to_zero):
         np.random.dirichlet(np.ones(N_REQUESTS * n_cities),
                             size=1).flatten().tolist()
     )
-    scaled_requests = [math.floor(r * 10_000) for r in requests]
+    scaled_requests = [math.floor(r * 1_000) for r in requests]
 
     r = [
         scaled_requests[i: i + N_REQUESTS]
@@ -244,11 +244,11 @@ if __name__ == "__main__":
     )
 
     opts = parser.parse_args()
-    print(opts)
+    
     if opts.full:
         for fmt in [MINIZINC, ASP]:
             run("small", 10, 3, 0, fmt)
-            run("medium", 10, 10, 0, fmt)
+            run("medium", 10, 6 if fmt == ASP else 8, 0, fmt)
             run("large", 10, N_CITIES, 0, fmt)
     else:
         run(opts.name, opts.batch_size, opts.count, opts.zeroes, opts.format)

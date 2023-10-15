@@ -1,69 +1,69 @@
 COMUNI = {
-	assisi,
-	orvieto,
-	gubbio,
-	umbertide,
-	castiglione_del_lago,
+	bastia_umbra,
 	narni,
-	terni,
-	marsciano,
+	gubbio,
 	citta_di_castello,
 	foligno,
-	san_giustino,
-	corciano,
-	perugia,
-	gualdo_tardino,
+	umbertide,
 	todi,
-	bastia_umbra,
-	amelia,
+	corciano,
+	orvieto,
+	perugia,
 	spoleto,
+	amelia,
+	assisi,
+	terni,
+	san_giustino,
+	marsciano,
 	magione,
+	gualdo_tardino,
+	castiglione_del_lago,
 };
 
 NUMERO_COMUNI = 19;
 
-ABITANTI_PER_COMUNE = [27, 19, 30, 16, 15, 17, 106, 18, 38, 55, 11, 21, 161, 14, 15, 21, 11, 36, 14];
+ABITANTI_PER_COMUNE = [21, 17, 30, 38, 55, 16, 15, 21, 19, 161, 36, 11, 27, 106, 11, 18, 14, 14, 15];
 
 STRADE_TRA_COMUNI = [|
-	false, false, false, false, false, false, false, false, false, true, false, false, false, false, false, true, false, false, false |
-	false, false, false, false, false, false, false, false, false, false, false, false, false, false, true, false, false, false, false |
-	false, false, false, true, false, false, false, false, false, false, false, false, false, true, false, false, false, false, false |
-	false, false, true, false, false, false, false, false, true, false, false, false, true, false, false, false, false, false, false |
-	false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true |
-	false, false, false, false, false, false, true, false, false, false, false, false, false, false, false, false, true, false, false |
+	false, false, false, false, false, false, false, false, false, true, false, false, true, false, false, false, false, false, false |
+	false, false, false, false, false, false, false, false, false, false, false, true, false, true, false, false, false, false, false |
 	false, false, false, false, false, true, false, false, false, false, false, false, false, false, false, false, false, true, false |
-	false, false, false, false, false, false, false, false, false, false, false, false, true, false, true, false, false, false, false |
-	false, false, false, true, false, false, false, false, false, false, true, false, false, false, false, false, false, false, false |
-	true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false |
-	false, false, false, false, false, false, false, false, true, false, false, false, false, false, false, false, false, false, false |
-	false, false, false, false, false, false, false, false, false, false, false, false, true, false, false, false, false, false, true |
-	false, false, false, true, false, false, false, true, false, false, false, true, false, false, false, true, false, false, false |
-	false, false, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false |
-	false, true, false, false, false, false, false, true, false, false, false, false, false, false, false, false, true, false, false |
-	true, false, false, false, false, false, false, false, false, false, false, false, true, false, false, false, false, false, false |
 	false, false, false, false, false, true, false, false, false, false, false, false, false, false, true, false, false, false, false |
+	false, false, false, false, false, false, false, false, false, false, false, false, true, false, false, false, false, false, false |
+	false, false, true, true, false, false, false, false, false, true, false, false, false, false, false, false, false, false, false |
+	false, false, false, false, false, false, false, false, true, false, false, true, false, false, false, true, false, false, false |
+	false, false, false, false, false, false, false, false, false, true, false, false, false, false, false, false, true, false, false |
 	false, false, false, false, false, false, true, false, false, false, false, false, false, false, false, false, false, false, false |
-	false, false, false, false, true, false, false, false, false, false, false, true, false, false, false, false, false, false, false |
+	true, false, false, false, false, true, false, true, false, false, false, false, false, false, false, true, false, false, false |
+	false, false, false, false, false, false, false, false, false, false, false, false, false, true, false, false, false, false, false |
+	false, true, false, false, false, false, true, false, false, false, false, false, false, false, false, false, false, false, false |
+	true, false, false, false, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false |
+	false, true, false, false, false, false, false, false, false, false, true, false, false, false, false, false, false, false, false |
+	false, false, false, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false |
+	false, false, false, false, false, false, true, false, false, true, false, false, false, false, false, false, false, false, false |
+	false, false, false, false, false, false, false, true, false, false, false, false, false, false, false, false, false, false, true |
+	false, false, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false |
+	false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true, false, false |
 |];
 
 RICHIESTE = [|
-	109, 11, 169, 137, 87 |
-	13, 192, 127, 34, 84 |
-	92, 81, 17, 52, 27 |
-	106, 105, 10, 104, 2 |
-	46, 64, 71, 21, 115 |
-	72, 49, 13, 178, 557 |
-	36, 138, 162, 132, 170 |
-	321, 70, 355, 276, 311 |
-	76, 129, 158, 31, 34 |
-	23, 67, 10, 100, 53 |
-	31, 104, 2, 76, 96 |
-	10, 89, 47, 35, 85 |
-	234, 151, 175, 65, 142 |
-	50, 88, 115, 64, 309 |
-	82, 8, 311, 137, 90 |
-	5, 131, 69, 20, 120 |
-	193, 19, 65, 7, 165 |
-	181, 35, 42, 117, 85 |
-	353, 142, 18, 101, 94 |
+	2, 1, 17, 3, 6 |
+	20, 15, 23, 3, 0 |
+	23, 0, 7, 12, 4 |
+	5, 14, 1, 22, 2 |
+	1, 5, 4, 11, 1 |
+	12, 19, 0, 8, 11 |
+	20, 3, 30, 14, 22 |
+	17, 3, 9, 3, 0 |
+	1, 13, 21, 4, 3 |
+	6, 3, 8, 12, 14 |
+	23, 8, 0, 12, 17 |
+	15, 10, 0, 0, 6 |
+	12, 38, 4, 17, 4 |
+	6, 5, 11, 7, 3 |
+	27, 5, 0, 1, 8 |
+	16, 0, 1, 12, 21 |
+	15, 23, 3, 5, 1 |
+	7, 18, 6, 8, 33 |
+	2, 0, 14, 25, 48 |
 |];

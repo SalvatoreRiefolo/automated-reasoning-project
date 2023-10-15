@@ -1,12 +1,12 @@
 COMUNI = {
+	umbertide,
 	magione,
-	san_giustino,
-	gualdo_tardino,
+	bastia_umbra,
 };
 
 NUMERO_COMUNI = 3;
 
-ABITANTI_PER_COMUNE = [14, 11, 14];
+ABITANTI_PER_COMUNE = [16, 14, 21];
 
 STRADE_TRA_COMUNI = [|
 	false, false, false |
@@ -15,7 +15,7 @@ STRADE_TRA_COMUNI = [|
 |];
 
 RICHIESTE = [|
-	855, 212, 780, 553, 70 |
-	698, 759, 172, 443, 721 |
-	504, 2259, 306, 39, 1619 |
+	223, 41, 104, 46, 9 |
+	216, 55, 10, 60, 95 |
+	5, 61, 1, 21, 45 |
 |];
